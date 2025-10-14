@@ -1,101 +1,459 @@
-import Image from "next/image";
+'use client'
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
+import ProjectButton from '@/components/ProjectButton'
+import Hero from '@/app/Hero'
+import ContactSection from '@/app/ContactSection';
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const containerRef = useRef(null)
+  const heroRef = useRef(null)
+  const softwareDevRef = useRef(null)
+  const embeddedRef = useRef(null)
+  const workRef = useRef(null)
+  const educationRef = useRef(null)
+  const formalEduRef = useRef(null)
+  const certificatesRef = useRef(null)
+  const projectsRef = useRef(null)
+  const project1Ref = useRef(null)
+  const project2Ref = useRef(null)
+  const project3Ref = useRef(null)
+  const project4Ref = useRef(null)
+  const project5Ref = useRef(null)
+  const contactRef = useRef(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    setIsLoaded(true)
+    
+    // Initial load animations
+    const tl = gsap.timeline()
+    tl.from('.hero-content > *', {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power4.out",
+      stagger: 0.2
+    })
+
+    // Text highlight animation function
+    const createHighlightAnimation = (element) => {
+      const highlight = gsap.timeline({
+        scrollTrigger: {
+          trigger: element,
+          start: "top center+=200",
+          end: "top center-=200",
+          scrub: true
+        }
+      })
+      
+      highlight
+        .from(element, {
+          backgroundSize: "0% 100%",
+          ease: "none"
+        })
+        .to(element, {
+          backgroundSize: "100% 100%",
+          ease: "none"
+        })
+    }
+
+    // Apply highlight animations
+    document.querySelectorAll('.highlight-text').forEach(createHighlightAnimation)
+
+    // Section scale and fade animations
+    const sections = [workRef, formalEduRef, certificatesRef]
+    sections.forEach((sectionRef) => {
+      // Container animation
+      gsap.from(sectionRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "top center",
+          scrub: 1
+        },
+        y: 100,
+        scale: 0.9,
+        opacity: 0,
+        ease: "power2.out"
+      })
+
+      // Content animations
+      const content = sectionRef.current.querySelector('.content-wrapper')
+      gsap.from(content, {
+        scrollTrigger: {
+          trigger: content,
+          start: "top bottom",
+          end: "top center+=100",
+          scrub: true
+        },
+        y: 50,
+        opacity: 0
+      })
+
+      // Image animations
+      const image = sectionRef.current.querySelector('.image-wrapper')
+      gsap.from(image, {
+        scrollTrigger: {
+          trigger: image,
+          start: "top bottom",
+          end: "top center+=100",
+          scrub: true
+        },
+        scale: 0.8,
+        opacity: 0
+      })
+    })
+
+    // Transition elements animation
+    gsap.from(".transition-line", {
+      scrollTrigger: {
+        trigger: ".transition-line",
+        start: "top center+=200",
+        end: "bottom center-=200",
+        scrub: 1
+      },
+      height: 0,
+      ease: "none"
+    })
+
+    gsap.from(".transition-quote", {
+      scrollTrigger: {
+        trigger: ".transition-quote",
+        start: "top center+=100",
+        end: "bottom center",
+        scrub: 1
+      },
+      y: 50,
+      opacity: 0,
+      ease: "power2.out"
+    })
+
+    // Projects scroll animations - smooth entry only
+    const projectRefs = [project1Ref, project2Ref, project3Ref, project4Ref, project5Ref]
+
+    projectRefs.forEach((projectRef, index) => {
+      if (projectRef.current) {
+        // Entry animation - scale up and fade in
+        gsap.from(projectRef.current, {
+          scrollTrigger: {
+            trigger: projectRef.current,
+            start: "top bottom",
+            end: "center center",
+            scrub: 1,
+          },
+          scale: 0.85,
+          opacity: 0,
+          y: 100,
+          ease: "power2.out"
+        })
+      }
+    })
+
+    // Contact section animation
+    const contactTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: contactRef.current,
+        start: "top center+=100",
+        toggleActions: "play none none reverse"
+      }
+    })
+
+    contactTl
+      .from(".contact-title", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      })
+      .from(".contact-links a", {
+        y: 20,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "power2.out"
+      }, "-=0.4")
+
+    return () => {
+      ScrollTrigger.killAll()
+    }
+  }, [])
+
+  return (
+    <div ref={containerRef} className={`w-full font-['Inter'] ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}>
+      <Hero />
+
+      <div className="bg-white relative">
+        {/* Work Experience Section */}
+        <section id="work" ref={workRef} className="py-32">
+          <div className="container mx-auto px-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="space-y-12">
+                <div className="flex items-center space-x-4">
+                  <div className="h-px bg-gray-200 w-24"></div>
+                </div>
+                <h2 className="highlight-text text-6xl font-light font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-yellow-200/50 to-yellow-200/50 bg-[length:100%_40%] bg-no-repeat bg-bottom">
+                  Work<br/>Experience
+                </h2>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Education Section */}
+      <div id="education" ref={educationRef} className="bg-white relative">
+        {/* Formal Education Section */}
+        <section ref={formalEduRef} className="py-32 bg-gradient-to-r from-white to-gray-50">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col lg:flex-row items-center gap-16 max-w-7xl mx-auto">
+              <div className="flex-1 space-y-12">
+                <div className="flex items-center space-x-4">
+                  <div className="h-px bg-gray-300 w-24"></div>
+                </div>
+                <h2 className="highlight-text text-6xl font-light font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-yellow-200/50 to-yellow-200/50 bg-[length:100%_40%] bg-no-repeat bg-bottom">
+                  Formal<br/>Education
+                </h2>
+                <div className="content-wrapper space-y-8">
+                  <div className="bg-white rounded-2xl p-8 space-y-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h3 className="text-2xl font-semibold text-gray-800">BSc Computer Science and Computer Engineering</h3>
+                    <p className="text-gray-600">Currently pursuing a dual major focusing on both software development and hardware engineering at the University of Cape Town.</p>
+                    <div className="flex flex-wrap gap-4 mt-4">
+                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Software Engineering</span>
+                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Computer Architecture</span>
+                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Data Structures</span>
+                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Digital Systems</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="image-wrapper flex-1 relative h-[600px] overflow-hidden rounded-2xl shadow-lg">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
+                <Image
+                  src="/UCT3.jpg"
+                  alt="University of Cape Town"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Professional Certificates Section */}
+        <section ref={certificatesRef} className="py-32 bg-gradient-to-r from-gray-50 to-white">
+          <div className="container mx-auto px-6">
+            <div className="space-y-12 max-w-7xl mx-auto">
+              <div className="flex items-center space-x-4">
+                <div className="h-px bg-gray-300 w-24"></div>
+              </div>
+              <h2 className="highlight-text text-6xl font-light font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-yellow-200/50 to-yellow-200/50 bg-[length:100%_40%] bg-no-repeat bg-bottom mb-16">
+                Professional<br/>Certificates
+              </h2>
+
+              <div className="content-wrapper space-y-8">
+                {/* GitHub Certificate */}
+                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex-1">
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-semibold text-gray-800">Career Essentials in GitHub</h3>
+                      <p className="text-gray-600">In-depth understanding of GitHub essentials and best practices for version control and collaboration.</p>
+                      <a
+                        href="https://www.linkedin.com/learning/certificates/1d6230ad35fdb103a28b6e0a45787474b14c6fdac50b3525e6d993b76c733b06?trk=share_certificate"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center mt-4 text-gray-700 hover:text-black transition-colors duration-300"
+                      >
+                        <span className="mr-2">View Certificate</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative h-48 w-48 overflow-hidden rounded-xl">
+                    <Image
+                      src="/Github1.jpg"
+                      alt="GitHub Certification"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* Microsoft Certificate */}
+                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex-1">
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-semibold text-gray-800">Career Essentials in Cybersecurity</h3>
+                      <p className="text-gray-600">Comprehensive understanding of cybersecurity fundamentals and best practices.</p>
+                      <a
+                        href="https://www.linkedin.com/learning/certificates/c4409cbed843fcbb8e953195b76f62c8ec9ef95a05cc0e159bc9d3d35d518fa9?trk=share_certificate"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center mt-4 text-gray-700 hover:text-black transition-colors duration-300"
+                      >
+                        <span className="mr-2">View Certificate</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative h-48 w-48 overflow-hidden rounded-xl">
+                    <Image
+                      src="/Microsoft1.jpg"
+                      alt="Microsoft Cybersecurity Certification"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* Docker Certificate */}
+                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex-1">
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-semibold text-gray-800">Docker Foundations</h3>
+                      <p className="text-gray-600">Comprehensive understanding of containerization and Docker ecosystem.</p>
+                      <a
+                        href="https://www.linkedin.com/learning/certificates/06dab7c1e18e30b75054602b67f41ebf189622dffda8bc1ac6d4993366edf446?u=70295562"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center mt-4 text-gray-700 hover:text-black transition-colors duration-300"
+                      >
+                        <span className="mr-2">View Certificate</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative h-48 w-48 overflow-hidden rounded-xl">
+                    <Image
+                      src="/Docker1.png"
+                      alt="Docker Certification"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Projects Section */}
+      <div id="projects" ref={projectsRef} className="bg-gradient-to-b from-white to-gray-50 relative py-20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto space-y-32">
+            {/* Project 1 - Uni Info SA */}
+            <section ref={project1Ref} className="min-h-screen flex items-center justify-center">
+              <button
+                onClick={() => console.log('Navigate to Uni Info SA')}
+                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                  <Image
+                    src="/uni-info-mock.png"
+                    alt="Uni Info SA Project"
+                    width={1200}
+                    height={800}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
+              </button>
+            </section>
+
+            {/* Project 2 - Biki */}
+            <section ref={project2Ref} className="min-h-screen flex items-center justify-center">
+              <button
+                onClick={() => console.log('Navigate to Biki')}
+                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                  <Image
+                    src="/biki-mock.png"
+                    alt="Biki Project"
+                    width={1200}
+                    height={800}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
+              </button>
+            </section>
+
+            {/* Project 3 - SafePay */}
+            <section ref={project3Ref} className="min-h-screen flex items-center justify-center">
+              <button
+                onClick={() => console.log('Navigate to SafePay')}
+                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                  <Image
+                    src="/safepay-mock.png"
+                    alt="SafePay Project"
+                    width={1200}
+                    height={800}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
+              </button>
+            </section>
+
+            {/* Project 4 - SeaClear */}
+            <section ref={project4Ref} className="min-h-screen flex items-center justify-center">
+              <button
+                onClick={() => console.log('Navigate to SeaClear')}
+                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                  <Image
+                    src="/seaclear-mock.png"
+                    alt="SeaClear Project"
+                    width={1200}
+                    height={800}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
+              </button>
+            </section>
+
+            {/* Project 5 - GridSmart */}
+            <section ref={project5Ref} className="min-h-screen flex items-center justify-center">
+              <button
+                onClick={() => console.log('Navigate to GridSmart')}
+                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              >
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                  <Image
+                    src="/gridsmart-mock.png"
+                    alt="GridSmart Project"
+                    width={1200}
+                    height={800}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
+              </button>
+            </section>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Contact Section */}
+      <ContactSection />
     </div>
-  );
+  )
 }
