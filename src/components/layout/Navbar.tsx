@@ -69,22 +69,22 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 w-full flex justify-end px-6 z-50">
       <div className="mt-6 mr-24">
-        <nav className="bg-white/80 backdrop-blur-md px-3 py-3 rounded-full">
-          <ul className="flex space-x-1">
+        <nav className="bg-white/90 backdrop-blur-md px-4 py-3 rounded-full border border-border shadow-sm">
+          <ul className="flex space-x-2">
             {navItems.map((item) => (
               <li key={item.title}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`group relative px-4 py-2 transition-colors duration-300
+                  className={`group relative px-5 py-2.5 transition-colors duration-300
                     ${activeSection === item.id ?
-                      'text-black font-semibold' :
-                      'text-gray-600 hover:text-black'
+                      'text-brand font-semibold' :
+                      'text-text-secondary hover:text-text-primary'
                     }`}
                 >
-                  <span className="text-sm uppercase tracking-[0.2em]">
+                  <span className="text-sm uppercase tracking-[0.15em] font-medium">
                     {item.title}
                   </span>
-                  <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-black origin-left transform transition-transform duration-300
+                  <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-brand origin-left transform transition-transform duration-300
                     ${activeSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
                   </span>
                 </button>

@@ -85,7 +85,7 @@ const Hero = () => {
   };
 
   return (
-    <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
+    <section ref={heroRef} className="relative h-screen w-full overflow-hidden bg-text-primary">
       <div ref={imageRef} className="absolute inset-0">
         <Image
           src="/profile15.jpg"
@@ -101,22 +101,22 @@ const Hero = () => {
         />
       </div>
 
-      <div 
+      <div
         ref={overlayRef}
-        className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent"
+        className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent"
       />
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <div ref={textRef} className="text-center text-white px-4">
-          <div className="mb-6">
-            <span className="role-tag inline-block text-sm uppercase tracking-widest font-medium bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm">
+        <div ref={textRef} className="text-center text-white px-6 max-w-5xl">
+          <div className="mb-8">
+            <span className="role-tag inline-block text-sm uppercase tracking-[0.2em] font-medium bg-white/5 border border-white/20 px-8 py-3 rounded-full backdrop-blur-md">
               Full Stack Engineer
             </span>
           </div>
-          
+
           <div>
-            <h1 className="font-['Playfair_Display'] text-8xl font-bold space-y-4">
-              <div className="block text-white">
+            <h1 className="font-['Playfair_Display'] text-6xl md:text-7xl lg:text-8xl font-bold leading-none mb-2">
+              <div className="block text-white mb-4">
                 {splitText("Tsianḓa")}
               </div>
               <div className="block text-white">
@@ -125,10 +125,11 @@ const Hero = () => {
             </h1>
           </div>
 
-          <div className="mt-8 max-w-2xl mx-auto">
-            <p 
+          <div className="mt-12 max-w-3xl mx-auto">
+            <p
               ref={nameRef}
-              className="tagline text-xl font-light text-white/90 leading-relaxed inline-block bg-gradient-to-r from-yellow-200/50 to-yellow-200/50 bg-no-repeat bg-bottom"
+              className="tagline text-xl md:text-2xl font-light text-white/95 leading-relaxed inline-block bg-gradient-to-r from-accent/80 to-accent/80 bg-no-repeat bg-bottom"
+              style={{ backgroundSize: '0% 40%' }}
             >
               My work bridges the gap between digital and physical systems
             </p>
@@ -136,8 +137,8 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ArrowDownCircle className="w-12 h-12 text-white/70" />
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <ArrowDownCircle className="w-10 h-10 text-white/60" />
       </div>
     </section>
   );

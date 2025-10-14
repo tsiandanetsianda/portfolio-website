@@ -189,16 +189,16 @@ export default function Home() {
     <div ref={containerRef} className={`w-full font-['Inter'] ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}>
       <Hero />
 
-      <div className="bg-white relative">
+      <div className="bg-background relative">
         {/* Work Experience Section */}
-        <section id="work" ref={workRef} className="py-32">
+        <section id="work" ref={workRef} className="py-24 md:py-32">
           <div className="container mx-auto px-6">
             <div className="max-w-7xl mx-auto">
-              <div className="space-y-12">
+              <div className="space-y-16">
                 <div className="flex items-center space-x-4">
-                  <div className="h-px bg-gray-200 w-24"></div>
+                  <div className="h-[1px] bg-border-subtle w-16"></div>
                 </div>
-                <h2 className="highlight-text text-6xl font-light font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-yellow-200/50 to-yellow-200/50 bg-[length:100%_40%] bg-no-repeat bg-bottom">
+                <h2 className="highlight-text text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-accent to-accent bg-[length:100%_40%] bg-no-repeat bg-bottom text-text-primary">
                   Work<br/>Experience
                 </h2>
               </div>
@@ -208,33 +208,33 @@ export default function Home() {
       </div>
 
       {/* Education Section */}
-      <div id="education" ref={educationRef} className="bg-white relative">
+      <div id="education" ref={educationRef} className="bg-background relative">
         {/* Formal Education Section */}
-        <section ref={formalEduRef} className="py-32 bg-gradient-to-r from-white to-gray-50">
+        <section ref={formalEduRef} className="py-24 md:py-32">
           <div className="container mx-auto px-6">
-            <div className="flex flex-col lg:flex-row items-center gap-16 max-w-7xl mx-auto">
-              <div className="flex-1 space-y-12">
+            <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 max-w-7xl mx-auto">
+              <div className="flex-1 space-y-16">
                 <div className="flex items-center space-x-4">
-                  <div className="h-px bg-gray-300 w-24"></div>
+                  <div className="h-[1px] bg-border-subtle w-16"></div>
                 </div>
-                <h2 className="highlight-text text-6xl font-light font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-yellow-200/50 to-yellow-200/50 bg-[length:100%_40%] bg-no-repeat bg-bottom">
+                <h2 className="highlight-text text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-accent to-accent bg-[length:100%_40%] bg-no-repeat bg-bottom text-text-primary">
                   Formal<br/>Education
                 </h2>
                 <div className="content-wrapper space-y-8">
-                  <div className="bg-white rounded-2xl p-8 space-y-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 className="text-2xl font-semibold text-gray-800">BSc Computer Science and Computer Engineering</h3>
-                    <p className="text-gray-600">Currently pursuing a dual major focusing on both software development and hardware engineering at the University of Cape Town.</p>
-                    <div className="flex flex-wrap gap-4 mt-4">
-                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Software Engineering</span>
-                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Computer Architecture</span>
-                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Data Structures</span>
-                      <span className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700">Digital Systems</span>
+                  <div className="bg-white border border-border rounded-2xl p-8 space-y-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                    <h3 className="text-2xl font-semibold text-text-primary">BSc Computer Science and Computer Engineering</h3>
+                    <p className="text-text-secondary leading-relaxed">Currently pursuing a dual major focusing on both software development and hardware engineering at the University of Cape Town.</p>
+                    <div className="flex flex-wrap gap-3 mt-6">
+                      <span className="tag">Software Engineering</span>
+                      <span className="tag">Computer Architecture</span>
+                      <span className="tag">Data Structures</span>
+                      <span className="tag">Digital Systems</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="image-wrapper flex-1 relative h-[600px] overflow-hidden rounded-2xl shadow-lg">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
+              <div className="image-wrapper flex-1 relative h-[600px] w-full overflow-hidden rounded-2xl border border-border shadow-sm">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
                 <Image
                   src="/UCT3.jpg"
                   alt="University of Cape Town"
@@ -247,37 +247,37 @@ export default function Home() {
         </section>
 
         {/* Professional Certificates Section */}
-        <section ref={certificatesRef} className="py-32 bg-gradient-to-r from-gray-50 to-white">
+        <section ref={certificatesRef} className="py-24 md:py-32">
           <div className="container mx-auto px-6">
-            <div className="space-y-12 max-w-7xl mx-auto">
+            <div className="space-y-16 max-w-7xl mx-auto">
               <div className="flex items-center space-x-4">
-                <div className="h-px bg-gray-300 w-24"></div>
+                <div className="h-[1px] bg-border-subtle w-16"></div>
               </div>
-              <h2 className="highlight-text text-6xl font-light font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-yellow-200/50 to-yellow-200/50 bg-[length:100%_40%] bg-no-repeat bg-bottom mb-16">
+              <h2 className="highlight-text text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-accent to-accent bg-[length:100%_40%] bg-no-repeat bg-bottom text-text-primary mb-16">
                 Professional<br/>Certificates
               </h2>
 
-              <div className="content-wrapper space-y-8">
+              <div className="content-wrapper space-y-6">
                 {/* GitHub Certificate */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white border border-border rounded-2xl p-8 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
-                    <div className="space-y-4">
-                      <h3 className="text-2xl font-semibold text-gray-800">Career Essentials in GitHub</h3>
-                      <p className="text-gray-600">In-depth understanding of GitHub essentials and best practices for version control and collaboration.</p>
+                    <div className="space-y-5">
+                      <h3 className="text-2xl font-semibold text-text-primary">Career Essentials in GitHub</h3>
+                      <p className="text-text-secondary leading-relaxed">In-depth understanding of GitHub essentials and best practices for version control and collaboration.</p>
                       <a
                         href="https://www.linkedin.com/learning/certificates/1d6230ad35fdb103a28b6e0a45787474b14c6fdac50b3525e6d993b76c733b06?trk=share_certificate"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center mt-4 text-gray-700 hover:text-black transition-colors duration-300"
+                        className="link-brand inline-flex items-center mt-6 font-medium group"
                       >
                         <span className="mr-2">View Certificate</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-48 w-48 overflow-hidden rounded-xl">
+                  <div className="relative h-48 w-48 overflow-hidden rounded-xl border border-border">
                     <Image
                       src="/Github1.jpg"
                       alt="GitHub Certification"
@@ -288,25 +288,25 @@ export default function Home() {
                 </div>
 
                 {/* Microsoft Certificate */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white border border-border rounded-2xl p-8 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
-                    <div className="space-y-4">
-                      <h3 className="text-2xl font-semibold text-gray-800">Career Essentials in Cybersecurity</h3>
-                      <p className="text-gray-600">Comprehensive understanding of cybersecurity fundamentals and best practices.</p>
+                    <div className="space-y-5">
+                      <h3 className="text-2xl font-semibold text-text-primary">Career Essentials in Cybersecurity</h3>
+                      <p className="text-text-secondary leading-relaxed">Comprehensive understanding of cybersecurity fundamentals and best practices.</p>
                       <a
                         href="https://www.linkedin.com/learning/certificates/c4409cbed843fcbb8e953195b76f62c8ec9ef95a05cc0e159bc9d3d35d518fa9?trk=share_certificate"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center mt-4 text-gray-700 hover:text-black transition-colors duration-300"
+                        className="link-brand inline-flex items-center mt-6 font-medium group"
                       >
                         <span className="mr-2">View Certificate</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-48 w-48 overflow-hidden rounded-xl">
+                  <div className="relative h-48 w-48 overflow-hidden rounded-xl border border-border">
                     <Image
                       src="/Microsoft1.jpg"
                       alt="Microsoft Cybersecurity Certification"
@@ -317,25 +317,25 @@ export default function Home() {
                 </div>
 
                 {/* Docker Certificate */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white border border-border rounded-2xl p-8 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
-                    <div className="space-y-4">
-                      <h3 className="text-2xl font-semibold text-gray-800">Docker Foundations</h3>
-                      <p className="text-gray-600">Comprehensive understanding of containerization and Docker ecosystem.</p>
+                    <div className="space-y-5">
+                      <h3 className="text-2xl font-semibold text-text-primary">Docker Foundations</h3>
+                      <p className="text-text-secondary leading-relaxed">Comprehensive understanding of containerization and Docker ecosystem.</p>
                       <a
                         href="https://www.linkedin.com/learning/certificates/06dab7c1e18e30b75054602b67f41ebf189622dffda8bc1ac6d4993366edf446?u=70295562"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center mt-4 text-gray-700 hover:text-black transition-colors duration-300"
+                        className="link-brand inline-flex items-center mt-6 font-medium group"
                       >
                         <span className="mr-2">View Certificate</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-48 w-48 overflow-hidden rounded-xl">
+                  <div className="relative h-48 w-48 overflow-hidden rounded-xl border border-border">
                     <Image
                       src="/Docker1.png"
                       alt="Docker Certification"
@@ -351,17 +351,17 @@ export default function Home() {
       </div>
 
       {/* Projects Section */}
-      <div id="projects" ref={projectsRef} className="bg-gradient-to-b from-white to-gray-50 relative py-20">
+      <div id="projects" ref={projectsRef} className="bg-background relative py-24">
         <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto space-y-32">
+          <div className="max-w-7xl mx-auto space-y-32 md:space-y-40">
             {/* Project 1 - Uni Info SA */}
             <section ref={project1Ref} className="min-h-screen flex items-center justify-center">
               <button
                 onClick={() => console.log('Navigate to Uni Info SA')}
-                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
                   <Image
                     src="/uni-info-mock.png"
                     alt="Uni Info SA Project"
@@ -377,10 +377,10 @@ export default function Home() {
             <section ref={project2Ref} className="min-h-screen flex items-center justify-center">
               <button
                 onClick={() => console.log('Navigate to Biki')}
-                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
                   <Image
                     src="/biki-mock.png"
                     alt="Biki Project"
@@ -396,10 +396,10 @@ export default function Home() {
             <section ref={project3Ref} className="min-h-screen flex items-center justify-center">
               <button
                 onClick={() => console.log('Navigate to SafePay')}
-                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
                   <Image
                     src="/safepay-mock.png"
                     alt="SafePay Project"
@@ -415,10 +415,10 @@ export default function Home() {
             <section ref={project4Ref} className="min-h-screen flex items-center justify-center">
               <button
                 onClick={() => console.log('Navigate to SeaClear')}
-                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
                   <Image
                     src="/seaclear-mock.png"
                     alt="SeaClear Project"
@@ -434,10 +434,10 @@ export default function Home() {
             <section ref={project5Ref} className="min-h-screen flex items-center justify-center">
               <button
                 onClick={() => console.log('Navigate to GridSmart')}
-                className="group relative w-full max-w-5xl transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent group-hover:from-black/20 transition-all duration-300 z-10"></div>
+                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
                   <Image
                     src="/gridsmart-mock.png"
                     alt="GridSmart Project"

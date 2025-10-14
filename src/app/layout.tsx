@@ -20,7 +20,7 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="bg-white text-gray-900 font-['Inter']">
+      <body className="bg-background text-text-primary font-['Inter']">
         <Navbar />
         {children}
       </body>
