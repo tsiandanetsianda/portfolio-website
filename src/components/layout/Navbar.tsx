@@ -2,8 +2,9 @@
 import { useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
-gsap.registerPlugin(ScrollToPlugin)
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home')
@@ -19,6 +20,16 @@ const Navbar = () => {
     const handleScroll = () => {
       const sections = ['home', 'work', 'education', 'projects']
       const scrollPosition = window.scrollY + window.innerHeight / 3
+
+      // Check if we're in the contact section (past projects)
+      const projectsElement = document.getElementById('projects')
+      if (projectsElement) {
+        const projectsBottom = projectsElement.offsetTop + projectsElement.offsetHeight
+        if (scrollPosition >= projectsBottom) {
+          setActiveSection('')
+          return
+        }
+      }
 
       for (const sectionId of sections) {
         const element = sectionId === 'home'
@@ -48,13 +59,22 @@ const Navbar = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
+      // Temporarily disable ScrollTrigger to prevent interference
+      const scrollTriggers = ScrollTrigger.getAll()
+      scrollTriggers.forEach(trigger => trigger.disable())
+
       const elementPosition = element.getBoundingClientRect().top + window.scrollY
       const offsetPosition = sectionId === 'home' ? 0 : elementPosition - 80
 
       gsap.to(window, {
-        duration: 1.5,
+        duration: 0.8,
         scrollTo: offsetPosition,
-        ease: 'power3.inOut'
+        ease: 'power2.out',
+        overwrite: 'auto',
+        onComplete: () => {
+          // Re-enable ScrollTriggers after scroll completes
+          scrollTriggers.forEach(trigger => trigger.enable())
+        }
       })
     }
   }

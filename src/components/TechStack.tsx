@@ -21,7 +21,7 @@ interface TechCategory {
 const techCategories: TechCategory[] = [
   {
     title: 'Production',
-    description: 'Professional work at MOHARA',
+    description: 'Professional work',
     emphasis: 'high',
     technologies: [
       { name: 'TypeScript' },
@@ -109,7 +109,7 @@ const TechStack = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="space-y-16 mb-20">
+          <div className="space-y-12 mb-16">
             <div className="flex items-center space-x-4">
               <div className="h-[1px] bg-border-subtle w-16"></div>
             </div>
@@ -119,7 +119,7 @@ const TechStack = () => {
           </div>
 
           {/* Categories */}
-          <div className="space-y-16">
+          <div className="space-y-12">
             {techCategories.map((category, categoryIndex) => {
               const styles = getEmphasisStyles(category.emphasis);
 
@@ -129,14 +129,8 @@ const TechStack = () => {
                   className="tech-category"
                 >
                   {/* Category Header */}
-                  <div className="mb-8">
-                    <div className="flex items-baseline gap-4 mb-3">
-                      <h3 className="text-2xl font-semibold font-['Playfair_Display'] text-text-primary">
-                        {category.title}
-                      </h3>
-                      <div className="flex-1 h-[1px] bg-border-subtle"></div>
-                    </div>
-                    <p className="text-sm text-text-secondary">
+                  <div className="mb-6">
+                    <p className="text-sm text-text-secondary mb-4">
                       {category.description}
                     </p>
                   </div>
@@ -167,20 +161,13 @@ const TechStack = () => {
 
                   {/* Divider (except for last category) */}
                   {categoryIndex < techCategories.length - 1 && (
-                    <div className="mt-16 h-[1px] bg-border-subtle"></div>
+                    <div className="mt-12 h-[1px] bg-border-subtle"></div>
                   )}
                 </div>
               );
             })}
           </div>
 
-          {/* Summary */}
-          <div className="mt-20 pt-12 border-t border-border">
-            <p className="text-text-secondary leading-relaxed text-center max-w-2xl mx-auto">
-              A comprehensive collection of technologies spanning production environments, personal
-              projects, and academic foundations—demonstrating versatility across the full stack.
-            </p>
-          </div>
         </div>
       </div>
     </section>

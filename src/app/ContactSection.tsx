@@ -1,4 +1,4 @@
-import { Mail, LinkedinIcon } from 'lucide-react';
+import { Mail, LinkedinIcon, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Inter, Playfair_Display } from 'next/font/google';
 import MagneticButton from '@/components/MagneticButton';
@@ -78,14 +78,40 @@ const ContactSection = () => {
                 </a>
               </MagneticButton>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            >
+              <MagneticButton strength={0.15}>
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-3">
+                      <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
+                        Resume
+                      </span>
+                      <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
+                        Download my CV
+                      </p>
+                    </div>
+                    <Download className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                </a>
+              </MagneticButton>
+            </motion.div>
           </div>
 
           {/* Footer Text */}
           <motion.div
-            className="text-center pt-20 border-t border-border"
+            className="text-left pt-20 border-t border-border"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
           >
             <p className="text-lg text-text-secondary font-normal">
               Looking forward to hearing from you
