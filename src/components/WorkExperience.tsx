@@ -28,9 +28,9 @@ const experiences: Experience[] = [
     company: 'MOHARA',
     role: 'Software Engineer Intern',
     type: 'Internship',
-    duration: 'Jul 2025 - Oct 2025 · 4 mos',
+    duration: 'Jul 2025 - Oct 2025 · 4 months',
     location: 'City of Cape Town, Western Cape, South Africa · Hybrid',
-    logo: '/mohara.png',
+    logo: '/MOHARA-LOGO-2.png',
     description: 'Worked on an enterprise platform that tracks time and manages resources across teams.',
     achievements: [
       'Built a full-stack feature enabling teams to create, assign, and track client projects',
@@ -44,9 +44,9 @@ const experiences: Experience[] = [
     company: 'Moshal Program',
     role: 'Career Champion',
     type: 'Full-time',
-    duration: 'Jun 2025 - Present · 5 mos',
+    duration: 'Jun 2025 - Present · 5 months',
     location: 'South Africa',
-    logo: '/moshal.jpg',
+    logo: '/MOSHAL-LOGO.png',
     description: 'Supporting Moshal scholars by enhancing access to career development pathways and helping them make informed professional decisions.',
     achievements: [
       'Conduct continuous research and resource curation to identify high-quality opportunities',

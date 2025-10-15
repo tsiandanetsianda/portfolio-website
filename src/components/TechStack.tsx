@@ -8,64 +8,86 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface Technology {
   name: string;
-  category: 'frontend' | 'backend' | 'database' | 'tools';
+  subtitle?: string;
 }
 
-const technologies: Technology[] = [
-  // Frontend
-  { name: 'React', category: 'frontend' },
-  { name: 'Next.js', category: 'frontend' },
-  { name: 'TypeScript', category: 'frontend' },
-  { name: 'Tailwind CSS', category: 'frontend' },
+interface TechCategory {
+  title: string;
+  description: string;
+  technologies: Technology[];
+  emphasis: 'high' | 'medium' | 'low';
+}
 
-  // Backend
-  { name: 'tRPC', category: 'backend' },
-  { name: 'Node.js', category: 'backend' },
-
-  // Database
-  { name: 'PostgreSQL', category: 'database' },
-
-  // Tools
-  { name: 'Git', category: 'tools' },
-  { name: 'GitHub', category: 'tools' },
+const techCategories: TechCategory[] = [
+  {
+    title: 'Production',
+    description: 'Professional work at MOHARA',
+    emphasis: 'high',
+    technologies: [
+      { name: 'TypeScript' },
+      { name: 'Next.js' },
+      { name: 'React' },
+      { name: 'Tailwind CSS' },
+      { name: 'tRPC' },
+      { name: 'Supabase' },
+      { name: 'Node.js' },
+      { name: 'PostgreSQL' },
+      { name: 'Git' },
+      { name: 'Agile' },
+      { name: 'TDD' },
+    ],
+  },
+  {
+    title: 'Projects',
+    description: 'Personal projects & applications',
+    emphasis: 'medium',
+    technologies: [
+      { name: 'React Native' },
+      { name: 'Python' },
+      { name: 'Flask' },
+      { name: 'MySQL' },
+      { name: 'MongoDB' },
+      { name: 'SQLite' },
+      { name: 'AWS' },
+      { name: 'Docker' },
+      { name: 'CI/CD' },
+      { name: 'Rasa' },
+      { name: 'YOLO' },
+      { name: 'scikit-learn' },
+      { name: 'TinyLlama' },
+      { name: 'HTML' },
+      { name: 'JavaScript' },
+    ],
+  },
+  {
+    title: 'Academic',
+    description: 'Coursework & foundational skills',
+    emphasis: 'low',
+    technologies: [
+      { name: 'Java' },
+      { name: 'C/C++' },
+      { name: 'Linux' },
+      { name: 'Data Modeling' },
+    ],
+  },
 ];
-
-const categoryConfig = {
-  frontend: {
-    label: 'Frontend',
-    color: 'bg-brand/10 text-brand border-brand/20',
-  },
-  backend: {
-    label: 'Backend',
-    color: 'bg-accent-dark/10 text-text-primary border-accent-dark/20',
-  },
-  database: {
-    label: 'Database',
-    color: 'bg-surface text-text-secondary border-border',
-  },
-  tools: {
-    label: 'Tools',
-    color: 'bg-surface text-text-secondary border-border',
-  },
-};
 
 const TechStack = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const techItems = document.querySelectorAll('.tech-item');
+    const categories = document.querySelectorAll('.tech-category');
 
-    techItems.forEach((item, index) => {
-      gsap.from(item, {
+    categories.forEach((category, index) => {
+      gsap.from(category, {
         scrollTrigger: {
-          trigger: item,
-          start: 'top bottom-=50',
-          end: 'top center+=100',
+          trigger: category,
+          start: 'top bottom-=100',
+          end: 'top center',
           scrub: 1,
         },
-        y: 30,
+        y: 60,
         opacity: 0,
-        scale: 0.9,
       });
     });
 
@@ -74,14 +96,13 @@ const TechStack = () => {
     };
   }, []);
 
-  // Group technologies by category
-  const groupedTech = technologies.reduce((acc, tech) => {
-    if (!acc[tech.category]) {
-      acc[tech.category] = [];
-    }
-    acc[tech.category].push(tech);
-    return acc;
-  }, {} as Record<string, Technology[]>);
+  const getEmphasisStyles = (emphasis: 'high' | 'medium' | 'low') => {
+    // All pills same size now
+    return {
+      pill: 'px-4 py-2 text-sm',
+      gap: 'gap-2.5',
+    };
+  };
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 bg-white">
@@ -93,40 +114,71 @@ const TechStack = () => {
               <div className="h-[1px] bg-border-subtle w-16"></div>
             </div>
             <h2 className="text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight text-text-primary">
-              Tech<br/>Stack
+              Tech<br />Stack
             </h2>
           </div>
 
-          {/* Technology Grid by Category */}
-          <div className="space-y-12">
-            {Object.entries(groupedTech).map(([category, techs]) => (
-              <div key={category} className="space-y-6">
-                {/* Category Label */}
-                <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-[0.15em]">
-                  {categoryConfig[category as keyof typeof categoryConfig].label}
-                </h3>
+          {/* Categories */}
+          <div className="space-y-16">
+            {techCategories.map((category, categoryIndex) => {
+              const styles = getEmphasisStyles(category.emphasis);
 
-                {/* Tech items for this category */}
-                <div className="flex flex-wrap gap-3">
-                  {techs.map((tech, index) => (
-                    <div
-                      key={`${tech.name}-${index}`}
-                      className={`tech-item px-6 py-3 rounded-lg border font-medium text-sm transition-all duration-300 hover:scale-105 hover:shadow-sm ${
-                        categoryConfig[category as keyof typeof categoryConfig].color
-                      }`}
-                    >
-                      {tech.name}
+              return (
+                <div
+                  key={category.title}
+                  className="tech-category"
+                >
+                  {/* Category Header */}
+                  <div className="mb-8">
+                    <div className="flex items-baseline gap-4 mb-3">
+                      <h3 className="text-2xl font-semibold font-['Playfair_Display'] text-text-primary">
+                        {category.title}
+                      </h3>
+                      <div className="flex-1 h-[1px] bg-border-subtle"></div>
                     </div>
-                  ))}
+                    <p className="text-sm text-text-secondary">
+                      {category.description}
+                    </p>
+                  </div>
+
+                  {/* Technologies */}
+                  <div className={`flex flex-wrap ${styles.gap}`}>
+                    {category.technologies.map((tech, techIndex) => (
+                      <div
+                        key={`${tech.name}-${techIndex}`}
+                        className={`tech-pill ${styles.pill} rounded-lg border border-border bg-white
+                          font-medium text-text-primary transition-all duration-300
+                          hover:border-text-tertiary hover:shadow-sm hover:-translate-y-0.5`}
+                        style={{
+                          animationDelay: `${techIndex * 0.05}s`,
+                        }}
+                      >
+                        <div className="flex flex-col">
+                          <span>{tech.name}</span>
+                          {tech.subtitle && (
+                            <span className="text-xs text-text-secondary font-normal mt-0.5">
+                              {tech.subtitle}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Divider (except for last category) */}
+                  {categoryIndex < techCategories.length - 1 && (
+                    <div className="mt-16 h-[1px] bg-border-subtle"></div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          {/* Optional: Summary text */}
-          <div className="mt-16 pt-12 border-t border-border">
+          {/* Summary */}
+          <div className="mt-20 pt-12 border-t border-border">
             <p className="text-text-secondary leading-relaxed text-center max-w-2xl mx-auto">
-              Technologies used in professional work experience, with a focus on full-stack development and modern web frameworks.
+              A comprehensive collection of technologies spanning production environments, personal
+              projects, and academic foundations—demonstrating versatility across the full stack.
             </p>
           </div>
         </div>

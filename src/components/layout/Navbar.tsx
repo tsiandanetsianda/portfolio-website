@@ -69,7 +69,7 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 w-full flex justify-end px-6 z-50">
       <div className="mt-6 mr-24">
-        <nav className="bg-white/90 backdrop-blur-md px-4 py-3 rounded-full border border-border shadow-sm">
+        <nav className="glass px-4 py-3 rounded-full shadow-sm">
           <ul className="flex space-x-2">
             {navItems.map((item) => (
               <li key={item.title}>

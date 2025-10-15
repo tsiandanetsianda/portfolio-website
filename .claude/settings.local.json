@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npm run dev)"
+      "Bash(npm run dev)",
+      "Read(//c/Users/tsian/OneDrive - University of Cape Town/2025/Applications/**)"
     ],
     "deny": [],
     "ask": []

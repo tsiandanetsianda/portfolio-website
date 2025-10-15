@@ -1,6 +1,7 @@
 import { Mail, LinkedinIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Inter, Playfair_Display } from 'next/font/google';
+import MagneticButton from '@/components/MagneticButton';
 
 // Load Google Fonts
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -26,47 +27,57 @@ const ContactSection = () => {
 
           {/* Contact Links */}
           <div className="space-y-8">
-            <motion.a
-              href="mailto:tsiandanetsianda@gmail.com"
-              className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
+            <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              <div className="flex items-center justify-between">
-                <div className="space-y-3">
-                  <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
-                    Email
-                  </span>
-                  <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
-                    tsiandanetsianda@gmail.com
-                  </p>
-                </div>
-                <Mail className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
-              </div>
-            </motion.a>
+              <MagneticButton strength={0.15}>
+                <a
+                  href="mailto:tsiandanetsianda@gmail.com"
+                  className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-3">
+                      <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
+                        Email
+                      </span>
+                      <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
+                        tsiandanetsianda@gmail.com
+                      </p>
+                    </div>
+                    <Mail className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                </a>
+              </MagneticButton>
+            </motion.div>
 
-            <motion.a
-              href="https://www.linkedin.com/in/tsianda-netsianda-b07b41231/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
+            <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
             >
-              <div className="flex items-center justify-between">
-                <div className="space-y-3">
-                  <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
-                    LinkedIn
-                  </span>
-                  <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
-                    Connect with me
-                  </p>
-                </div>
-                <LinkedinIcon className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
-              </div>
-            </motion.a>
+              <MagneticButton strength={0.15}>
+                <a
+                  href="https://www.linkedin.com/in/tsianda-netsianda-b07b41231/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-3">
+                      <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
+                        LinkedIn
+                      </span>
+                      <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
+                        Connect with me
+                      </p>
+                    </div>
+                    <LinkedinIcon className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                </a>
+              </MagneticButton>
+            </motion.div>
           </div>
 
           {/* Footer Text */}

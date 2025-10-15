@@ -13,6 +13,15 @@ import TechStack from '@/components/TechStack';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
+// Brand colors for each project
+const projectBrandColors = {
+  biki: '#4CAF50',
+  uniInfoSA: '#5AB5E1',
+  safePay: '#6A63F6',
+  seaClear: '#5B9BD5',
+  gridSmart: '#1F3A52'
+}
+
 export default function Home() {
   const containerRef = useRef(null)
   const heroRef = useRef(null)
@@ -44,30 +53,6 @@ export default function Home() {
       stagger: 0.2
     })
 
-    // Text highlight animation function
-    const createHighlightAnimation = (element) => {
-      const highlight = gsap.timeline({
-        scrollTrigger: {
-          trigger: element,
-          start: "top center+=200",
-          end: "top center-=200",
-          scrub: true
-        }
-      })
-      
-      highlight
-        .from(element, {
-          backgroundSize: "0% 100%",
-          ease: "none"
-        })
-        .to(element, {
-          backgroundSize: "100% 100%",
-          ease: "none"
-        })
-    }
-
-    // Apply highlight animations
-    document.querySelectorAll('.highlight-text').forEach(createHighlightAnimation)
 
     // Section scale and fade animations
     const sections = [workRef, formalEduRef, certificatesRef]
@@ -198,75 +183,75 @@ export default function Home() {
 
       {/* Education Section */}
       <div id="education" ref={educationRef} className="bg-background relative">
-        {/* Formal Education Section */}
+        {/* Education Section */}
         <section ref={formalEduRef} className="py-24 md:py-32">
           <div className="container mx-auto px-6">
-            <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 max-w-7xl mx-auto">
-              <div className="flex-1 space-y-16">
-                <div className="flex items-center space-x-4">
-                  <div className="h-[1px] bg-border-subtle w-16"></div>
-                </div>
-                <h2 className="highlight-text text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-accent to-accent bg-[length:100%_40%] bg-no-repeat bg-bottom text-text-primary">
-                  Formal<br/>Education
-                </h2>
-                <div className="content-wrapper space-y-8">
-                  <div className="bg-white border border-border rounded-2xl p-8 space-y-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
-                    <h3 className="text-2xl font-semibold text-text-primary">BSc Computer Science and Computer Engineering</h3>
-                    <p className="text-text-secondary leading-relaxed">Currently pursuing a dual major focusing on both software development and hardware engineering at the University of Cape Town.</p>
-                    <div className="flex flex-wrap gap-3 mt-6">
+            <div className="max-w-7xl mx-auto space-y-16">
+              <div className="flex items-center space-x-4">
+                <div className="h-[1px] bg-border-subtle w-16"></div>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight text-text-primary">
+                Education
+              </h2>
+              <div className="content-wrapper">
+                <div className="card-reflection flex flex-col lg:flex-row items-center gap-12 bg-white border border-border rounded-2xl p-12 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                  <div className="flex-1 space-y-8">
+                    <h3 className="text-3xl font-semibold text-text-primary">BSc Computer Science and Computer Engineering</h3>
+                    <p className="text-lg text-text-secondary leading-relaxed">Currently pursuing a dual major focusing on both software development and hardware engineering at the University of Cape Town.</p>
+                    <div className="flex flex-wrap gap-3">
                       <span className="tag">Software Engineering</span>
                       <span className="tag">Computer Architecture</span>
                       <span className="tag">Data Structures</span>
                       <span className="tag">Digital Systems</span>
                     </div>
                   </div>
+                  <div className="relative h-64 w-64 overflow-hidden rounded-lg border border-border flex-shrink-0">
+                    <Image
+                      src="/UCT-LOGO-2.png"
+                      alt="University of Cape Town"
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="image-wrapper flex-1 relative h-[600px] w-full overflow-hidden rounded-2xl border border-border shadow-sm">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
-                <Image
-                  src="/UCT3.jpg"
-                  alt="University of Cape Town"
-                  fill
-                  className="object-cover"
-                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Professional Certificates Section */}
-        <section ref={certificatesRef} className="py-24 md:py-32">
+        {/* Certificates subsection - integrated within Education */}
+        <section ref={certificatesRef} className="pb-24 md:pb-32">
           <div className="container mx-auto px-6">
-            <div className="space-y-16 max-w-7xl mx-auto">
-              <div className="flex items-center space-x-4">
-                <div className="h-[1px] bg-border-subtle w-16"></div>
-              </div>
-              <h2 className="highlight-text text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-accent to-accent bg-[length:100%_40%] bg-no-repeat bg-bottom text-text-primary mb-16">
-                Professional<br/>Certificates
-              </h2>
+            <div className="max-w-7xl mx-auto">
+              {/* Subtle divider */}
+              <div className="gradient-divider my-8"></div>
 
-              <div className="content-wrapper space-y-6">
+              {/* Certificates label */}
+              <h3 className="text-xl font-semibold text-text-primary mb-6 uppercase tracking-[0.1em]">
+                Professional Certifications
+              </h3>
+
+              <div className="space-y-3">
                 {/* GitHub Certificate */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white border border-border rounded-2xl p-8 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
-                    <div className="space-y-5">
-                      <h3 className="text-2xl font-semibold text-text-primary">Career Essentials in GitHub</h3>
-                      <p className="text-text-secondary leading-relaxed">In-depth understanding of GitHub essentials and best practices for version control and collaboration.</p>
+                    <div className="space-y-3">
+                      <h4 className="text-lg font-semibold text-text-primary">Career Essentials in GitHub</h4>
+                      <p className="text-sm text-text-secondary leading-relaxed">Version control and collaboration best practices.</p>
                       <a
                         href="https://www.linkedin.com/learning/certificates/1d6230ad35fdb103a28b6e0a45787474b14c6fdac50b3525e6d993b76c733b06?trk=share_certificate"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="link-brand inline-flex items-center mt-6 font-medium group"
+                        className="link-brand inline-flex items-center text-sm font-medium group"
                       >
-                        <span className="mr-2">View Certificate</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <span className="mr-1.5">View</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-48 w-48 overflow-hidden rounded-xl border border-border">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-lg border border-border flex-shrink-0">
                     <Image
                       src="/Github1.jpg"
                       alt="GitHub Certification"
@@ -277,25 +262,25 @@ export default function Home() {
                 </div>
 
                 {/* Microsoft Certificate */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white border border-border rounded-2xl p-8 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
-                    <div className="space-y-5">
-                      <h3 className="text-2xl font-semibold text-text-primary">Career Essentials in Cybersecurity</h3>
-                      <p className="text-text-secondary leading-relaxed">Comprehensive understanding of cybersecurity fundamentals and best practices.</p>
+                    <div className="space-y-3">
+                      <h4 className="text-lg font-semibold text-text-primary">Career Essentials in Cybersecurity</h4>
+                      <p className="text-sm text-text-secondary leading-relaxed">Cybersecurity fundamentals and best practices.</p>
                       <a
                         href="https://www.linkedin.com/learning/certificates/c4409cbed843fcbb8e953195b76f62c8ec9ef95a05cc0e159bc9d3d35d518fa9?trk=share_certificate"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="link-brand inline-flex items-center mt-6 font-medium group"
+                        className="link-brand inline-flex items-center text-sm font-medium group"
                       >
-                        <span className="mr-2">View Certificate</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <span className="mr-1.5">View</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-48 w-48 overflow-hidden rounded-xl border border-border">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-lg border border-border flex-shrink-0">
                     <Image
                       src="/Microsoft1.jpg"
                       alt="Microsoft Cybersecurity Certification"
@@ -306,25 +291,25 @@ export default function Home() {
                 </div>
 
                 {/* Docker Certificate */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 bg-white border border-border rounded-2xl p-8 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
-                    <div className="space-y-5">
-                      <h3 className="text-2xl font-semibold text-text-primary">Docker Foundations</h3>
-                      <p className="text-text-secondary leading-relaxed">Comprehensive understanding of containerization and Docker ecosystem.</p>
+                    <div className="space-y-3">
+                      <h4 className="text-lg font-semibold text-text-primary">Docker Foundations</h4>
+                      <p className="text-sm text-text-secondary leading-relaxed">Containerization and Docker ecosystem.</p>
                       <a
                         href="https://www.linkedin.com/learning/certificates/06dab7c1e18e30b75054602b67f41ebf189622dffda8bc1ac6d4993366edf446?u=70295562"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="link-brand inline-flex items-center mt-6 font-medium group"
+                        className="link-brand inline-flex items-center text-sm font-medium group"
                       >
-                        <span className="mr-2">View Certificate</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <span className="mr-1.5">View</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-48 w-48 overflow-hidden rounded-xl border border-border">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-lg border border-border flex-shrink-0">
                     <Image
                       src="/Docker1.png"
                       alt="Docker Certification"
@@ -345,15 +330,38 @@ export default function Home() {
       {/* Projects Section */}
       <div id="projects" ref={projectsRef} className="bg-background relative py-24">
         <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto space-y-32 md:space-y-40">
+          <div className="max-w-7xl mx-auto">
+            {/* Section Header */}
+            <div className="space-y-16 mb-32">
+              <div className="flex items-center space-x-4">
+                <div className="h-[1px] bg-border-subtle w-16"></div>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight text-text-primary">
+                Projects
+              </h2>
+            </div>
+
+            <div className="space-y-32 md:space-y-40">
             {/* Project 1 - Uni Info SA */}
             <section ref={project1Ref} className="min-h-screen flex items-center justify-center">
               <button
                 onClick={() => console.log('Navigate to Uni Info SA')}
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
+                <div
+                  className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg transition-all duration-350"
+                  style={{
+                    '--brand-color': projectBrandColors.uniInfoSA,
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = projectBrandColors.uniInfoSA}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+                >
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t to-transparent group-hover:opacity-100 opacity-75 transition-all duration-350 z-10"
+                    style={{
+                      backgroundImage: `linear-gradient(to top, ${projectBrandColors.uniInfoSA}08, transparent)`
+                    }}
+                  ></div>
                   <Image
                     src="/uni-info-mock.png"
                     alt="Uni Info SA Project"
@@ -371,8 +379,20 @@ export default function Home() {
                 onClick={() => console.log('Navigate to Biki')}
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
+                <div
+                  className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg transition-all duration-350"
+                  style={{
+                    '--brand-color': projectBrandColors.biki,
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = projectBrandColors.biki}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+                >
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t to-transparent group-hover:opacity-100 opacity-75 transition-all duration-350 z-10"
+                    style={{
+                      backgroundImage: `linear-gradient(to top, ${projectBrandColors.biki}08, transparent)`
+                    }}
+                  ></div>
                   <Image
                     src="/biki-mock.png"
                     alt="Biki Project"
@@ -390,8 +410,20 @@ export default function Home() {
                 onClick={() => console.log('Navigate to SafePay')}
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
+                <div
+                  className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg transition-all duration-350"
+                  style={{
+                    '--brand-color': projectBrandColors.safePay,
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = projectBrandColors.safePay}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+                >
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t to-transparent group-hover:opacity-100 opacity-75 transition-all duration-350 z-10"
+                    style={{
+                      backgroundImage: `linear-gradient(to top, ${projectBrandColors.safePay}08, transparent)`
+                    }}
+                  ></div>
                   <Image
                     src="/safepay-mock.png"
                     alt="SafePay Project"
@@ -409,8 +441,20 @@ export default function Home() {
                 onClick={() => console.log('Navigate to SeaClear')}
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
+                <div
+                  className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg transition-all duration-350"
+                  style={{
+                    '--brand-color': projectBrandColors.seaClear,
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = projectBrandColors.seaClear}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+                >
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t to-transparent group-hover:opacity-100 opacity-75 transition-all duration-350 z-10"
+                    style={{
+                      backgroundImage: `linear-gradient(to top, ${projectBrandColors.seaClear}08, transparent)`
+                    }}
+                  ></div>
                   <Image
                     src="/seaclear-mock.png"
                     alt="SeaClear Project"
@@ -428,8 +472,20 @@ export default function Home() {
                 onClick={() => console.log('Navigate to GridSmart')}
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
-                <div className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg group-hover:border-text-tertiary transition-all duration-350">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent group-hover:from-black/10 transition-all duration-350 z-10"></div>
+                <div
+                  className="relative w-full h-auto rounded-2xl overflow-hidden border border-border shadow-md group-hover:shadow-lg transition-all duration-350"
+                  style={{
+                    '--brand-color': projectBrandColors.gridSmart,
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = projectBrandColors.gridSmart}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+                >
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t to-transparent group-hover:opacity-100 opacity-75 transition-all duration-350 z-10"
+                    style={{
+                      backgroundImage: `linear-gradient(to top, ${projectBrandColors.gridSmart}08, transparent)`
+                    }}
+                  ></div>
                   <Image
                     src="/gridsmart-mock.png"
                     alt="GridSmart Project"
@@ -440,6 +496,7 @@ export default function Home() {
                 </div>
               </button>
             </section>
+            </div>
           </div>
         </div>
       </div>

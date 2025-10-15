@@ -17,9 +17,9 @@ const Hero = () => {
 
   useEffect(() => {
     const chars = textRef.current.querySelectorAll('.char-animation');
-    
+
     const tl = gsap.timeline();
-    
+
     tl.from(imageRef.current, {
       scale: 1.2,
       duration: 2,
@@ -49,27 +49,18 @@ const Hero = () => {
       ease: "power3.out"
     }, "-=0.3");
 
-    // Tagline highlight animation
-    const highlight = gsap.timeline({
+
+    // Parallax effect on hero image
+    gsap.to(imageRef.current, {
       scrollTrigger: {
         trigger: heroRef.current,
-        start: "top top",
-        end: "bottom center",
-        scrub: true
-      }
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      },
+      yPercent: 30,
+      ease: 'none'
     });
-    
-    highlight
-      .fromTo(nameRef.current, 
-        {
-          backgroundSize: "0% 40%",
-        },
-        {
-          backgroundSize: "100% 40%",
-          duration: 1,
-          ease: "power2.out"
-        }
-      );
 
     return () => {
       ScrollTrigger.killAll();
@@ -128,8 +119,7 @@ const Hero = () => {
           <div className="mt-12 max-w-3xl mx-auto">
             <p
               ref={nameRef}
-              className="tagline text-xl md:text-2xl font-light text-white/95 leading-relaxed inline-block bg-gradient-to-r from-accent/80 to-accent/80 bg-no-repeat bg-bottom"
-              style={{ backgroundSize: '0% 40%' }}
+              className="tagline text-xl md:text-2xl font-light text-white/95 leading-relaxed"
             >
               My work bridges the gap between digital and physical systems
             </p>
