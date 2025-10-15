@@ -3,7 +3,6 @@ import '@fontsource/playfair-display'
 import '@fontsource/inter'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
-import ScrollProgress from '@/components/ScrollProgress'
 import GradientMesh from '@/components/GradientMesh'
 
 export const metadata: Metadata = {
@@ -24,7 +23,6 @@ export default function RootLayout({
       </head>
       <body className="bg-background text-text-primary font-['Inter']">
         <GradientMesh />
-        <ScrollProgress />
         <Navbar />
         {children}
       </body>

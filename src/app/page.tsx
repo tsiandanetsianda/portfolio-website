@@ -205,7 +205,7 @@ export default function Home() {
                       <span className="tag">Digital Systems</span>
                     </div>
                   </div>
-                  <div className="relative h-64 w-64 overflow-hidden rounded-lg border border-border flex-shrink-0">
+                  <div className="relative h-64 w-64 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/UCT-LOGO-2.png"
                       alt="University of Cape Town"
@@ -251,7 +251,7 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-32 w-32 overflow-hidden rounded-lg border border-border flex-shrink-0">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/Github1.jpg"
                       alt="GitHub Certification"
@@ -280,7 +280,7 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-32 w-32 overflow-hidden rounded-lg border border-border flex-shrink-0">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/Microsoft1.jpg"
                       alt="Microsoft Cybersecurity Certification"
@@ -309,10 +309,39 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-32 w-32 overflow-hidden rounded-lg border border-border flex-shrink-0">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/Docker1.png"
                       alt="Docker Certification"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* FNB App Academy Certificate */}
+                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                  <div className="flex-1">
+                    <div className="space-y-3">
+                      <h4 className="text-lg font-semibold text-text-primary">FNB App Academy 2025</h4>
+                      <p className="text-sm text-text-secondary leading-relaxed">Mobile application development and related business processes.</p>
+                      <a
+                        href="https://drive.google.com/file/d/1wgeUEQFqnuVdCeaO7DL0xYPrIxHYhcmu/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-brand inline-flex items-center text-sm font-medium group"
+                      >
+                        <span className="mr-1.5">View</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
+                    <Image
+                      src="/FNB-LOGO.jpg"
+                      alt="FNB App Academy Certification"
                       fill
                       className="object-contain"
                     />

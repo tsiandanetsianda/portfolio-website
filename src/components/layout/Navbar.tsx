@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollToPlugin)
-}
+gsap.registerPlugin(ScrollToPlugin)
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home')
@@ -48,21 +46,16 @@ const Navbar = () => {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
-    if (sectionId === 'home') {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY
+      const offsetPosition = sectionId === 'home' ? 0 : elementPosition - 80
+
       gsap.to(window, {
         duration: 1.5,
-        scrollTo: { y: 0, autoKill: true },
+        scrollTo: offsetPosition,
         ease: 'power3.inOut'
       })
-    } else {
-      const element = document.getElementById(sectionId)
-      if (element) {
-        gsap.to(window, {
-          duration: 1.5,
-          scrollTo: { y: element, offsetY: 0, autoKill: true },
-          ease: 'power3.inOut'
-        })
-      }
     }
   }
 

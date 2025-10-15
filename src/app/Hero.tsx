@@ -76,7 +76,7 @@ const Hero = () => {
   };
 
   return (
-    <section ref={heroRef} className="relative h-screen w-full overflow-hidden bg-text-primary">
+    <section id="home" ref={heroRef} className="relative h-screen w-full overflow-hidden bg-text-primary">
       <div ref={imageRef} className="absolute inset-0">
         <Image
           src="/profile15.jpg"
