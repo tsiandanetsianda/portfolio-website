@@ -68,3 +68,21 @@
     @apply inline-block px-5 py-2.5 bg-surface text-text-secondary text-sm font-medium rounded-full;
   }
 }
+
+@layer utilities {
+  /* Fade-in animation for expandable content */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

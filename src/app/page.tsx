@@ -7,7 +7,9 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
 import ProjectButton from '@/components/ProjectButton'
 import Hero from '@/app/Hero'
-import ContactSection from '@/app/ContactSection';
+import ContactSection from '@/app/ContactSection'
+import WorkExperience from '@/components/WorkExperience'
+import TechStack from '@/components/TechStack';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -189,22 +191,9 @@ export default function Home() {
     <div ref={containerRef} className={`w-full font-['Inter'] ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}>
       <Hero />
 
-      <div className="bg-background relative">
-        {/* Work Experience Section */}
-        <section id="work" ref={workRef} className="py-24 md:py-32">
-          <div className="container mx-auto px-6">
-            <div className="max-w-7xl mx-auto">
-              <div className="space-y-16">
-                <div className="flex items-center space-x-4">
-                  <div className="h-[1px] bg-border-subtle w-16"></div>
-                </div>
-                <h2 className="highlight-text text-4xl md:text-5xl font-semibold font-['Playfair_Display'] leading-tight inline bg-gradient-to-r from-accent to-accent bg-[length:100%_40%] bg-no-repeat bg-bottom text-text-primary">
-                  Work<br/>Experience
-                </h2>
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* Work Experience Section */}
+      <div id="work" ref={workRef}>
+        <WorkExperience />
       </div>
 
       {/* Education Section */}
@@ -349,6 +338,9 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      {/* Tech Stack Section */}
+      <TechStack />
 
       {/* Projects Section */}
       <div id="projects" ref={projectsRef} className="bg-background relative py-24">
