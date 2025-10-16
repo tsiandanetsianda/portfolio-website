@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run dev)",
-      "Read(//c/Users/tsian/OneDrive - University of Cape Town/2025/Applications/**)"
+      "Read(//c/Users/tsian/OneDrive - University of Cape Town/2025/Applications/**)",
+      "WebFetch(domain:www.apple.com)",
+      "Bash(mkdir:*)",
+      "Bash(ffmpeg:*)"
     ],
     "deny": [],
     "ask": []

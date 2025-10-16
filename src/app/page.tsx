@@ -197,13 +197,18 @@ export default function Home() {
                 <div className="card-reflection flex flex-col lg:flex-row items-center gap-12 bg-white border border-border rounded-2xl p-12 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1 space-y-8">
                     <h3 className="text-3xl font-semibold text-text-primary">BSc Computer Science and Computer Engineering</h3>
-                    <p className="text-lg text-text-secondary leading-relaxed">Currently pursuing a dual major focusing on both software development and hardware engineering at the University of Cape Town.</p>
-                    <div className="flex flex-wrap gap-3">
-                      <span className="tag">Software Engineering</span>
-                      <span className="tag">Computer Architecture</span>
-                      <span className="tag">Data Structures</span>
-                      <span className="tag">Digital Systems</span>
-                    </div>
+                    <p className="text-lg text-text-secondary leading-relaxed">Currently pursuing studies in software systems, algorithms, machine learning, embedded systems, and digital electronics at the University of Cape Town.</p>
+                    <a
+                      href="https://drive.google.com/file/d/1i6olrhExjdm2bH8Bs6JmheQg7uYKMAby/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-brand inline-flex items-center text-base font-medium group"
+                    >
+                      <span className="mr-2">View</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-250" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
                   </div>
                   <div className="relative h-64 w-64 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
@@ -373,8 +378,8 @@ export default function Home() {
             <div className="space-y-32 md:space-y-40">
             {/* Project 1 - Uni Info SA */}
             <section ref={project1Ref} className="min-h-screen flex items-center justify-center">
-              <button
-                onClick={() => console.log('Navigate to Uni Info SA')}
+              <Link
+                href="/projects/uni-info-sa"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
                 <div
@@ -399,13 +404,13 @@ export default function Home() {
                     className="object-contain w-full h-auto"
                   />
                 </div>
-              </button>
+              </Link>
             </section>
 
             {/* Project 2 - Biki */}
             <section ref={project2Ref} className="min-h-screen flex items-center justify-center">
-              <button
-                onClick={() => console.log('Navigate to Biki')}
+              <Link
+                href="/projects/biki"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
                 <div
@@ -430,13 +435,13 @@ export default function Home() {
                     className="object-contain w-full h-auto"
                   />
                 </div>
-              </button>
+              </Link>
             </section>
 
             {/* Project 3 - SafePay */}
             <section ref={project3Ref} className="min-h-screen flex items-center justify-center">
-              <button
-                onClick={() => console.log('Navigate to SafePay')}
+              <Link
+                href="/projects/safepay"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
                 <div
@@ -461,13 +466,13 @@ export default function Home() {
                     className="object-contain w-full h-auto"
                   />
                 </div>
-              </button>
+              </Link>
             </section>
 
             {/* Project 4 - SeaClear */}
             <section ref={project4Ref} className="min-h-screen flex items-center justify-center">
-              <button
-                onClick={() => console.log('Navigate to SeaClear')}
+              <Link
+                href="/projects/seaclear"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
                 <div
@@ -492,13 +497,13 @@ export default function Home() {
                     className="object-contain w-full h-auto"
                   />
                 </div>
-              </button>
+              </Link>
             </section>
 
             {/* Project 5 - GridSmart */}
             <section ref={project5Ref} className="min-h-screen flex items-center justify-center">
-              <button
-                onClick={() => console.log('Navigate to GridSmart')}
+              <Link
+                href="/projects/gridsmart"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
               >
                 <div
@@ -523,7 +528,7 @@ export default function Home() {
                     className="object-contain w-full h-auto"
                   />
                 </div>
-              </button>
+              </Link>
             </section>
             </div>
           </div>
@@ -531,7 +536,9 @@ export default function Home() {
       </div>
 
       {/* Contact Section */}
-      <ContactSection />
+      <div id="contact" ref={contactRef}>
+        <ContactSection />
+      </div>
     </div>
   )
 }

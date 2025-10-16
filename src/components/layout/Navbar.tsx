@@ -13,22 +13,21 @@ const Navbar = () => {
     { title: 'Home', id: 'home' },
     { title: 'Work', id: 'work' },
     { title: 'Education', id: 'education' },
-    { title: 'Projects', id: 'projects' }
+    { title: 'Projects', id: 'projects' },
+    { title: 'Contact', id: 'contact' }
   ]
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'work', 'education', 'projects']
+      const sections = ['home', 'work', 'education', 'projects', 'contact']
       const scrollPosition = window.scrollY + window.innerHeight / 3
 
-      // Check if we're in the contact section (past projects)
-      const projectsElement = document.getElementById('projects')
-      if (projectsElement) {
-        const projectsBottom = projectsElement.offsetTop + projectsElement.offsetHeight
-        if (scrollPosition >= projectsBottom) {
-          setActiveSection('')
-          return
-        }
+      // Check if we're near the bottom of the page (likely in contact section)
+      const isNearBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100
+
+      if (isNearBottom) {
+        setActiveSection('contact')
+        return
       }
 
       for (const sectionId of sections) {
@@ -81,23 +80,23 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 w-full flex justify-end px-6 z-50">
-      <div className="mt-6 mr-24">
-        <nav className="glass px-4 py-3 rounded-full shadow-sm">
-          <ul className="flex space-x-2">
+      <div className="mt-4 mr-12">
+        <nav className="glass px-3 py-2 rounded-full shadow-sm">
+          <ul className="flex space-x-1">
             {navItems.map((item) => (
               <li key={item.title}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`group relative px-5 py-2.5 transition-colors duration-300
+                  className={`group relative px-3 py-1.5 transition-colors duration-300
                     ${activeSection === item.id ?
                       'text-brand font-semibold' :
                       'text-text-secondary hover:text-text-primary'
                     }`}
                 >
-                  <span className="text-sm uppercase tracking-[0.15em] font-medium">
+                  <span className="text-xs uppercase tracking-[0.12em] font-medium">
                     {item.title}
                   </span>
-                  <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-brand origin-left transform transition-transform duration-300
+                  <span className={`absolute -bottom-0.5 left-0 w-full h-0.5 bg-brand origin-left transform transition-transform duration-300
                     ${activeSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}>
                   </span>
                 </button>
