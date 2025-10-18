@@ -94,7 +94,7 @@ export default function ProjectStats({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-16 text-neutral-900 text-center"
+          className="text-5xl font-semibold tracking-tight mb-16 text-neutral-900 text-center"
         >
           Impact & Achievements
         </motion.h2>
@@ -124,14 +124,14 @@ export default function ProjectStats({
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow text-center"
             >
               <div
-                className="text-4xl md:text-5xl font-bold mb-3"
+                className="text-6xl font-semibold tracking-tighter mb-3"
                 style={{ color: brandColor }}
               >
                 <NumberCounter end={stat.value} />
                 {stat.value >= 100 && stat.label !== '% Satisfaction' && '+'}
                 {stat.label.includes('%') && '%'}
               </div>
-              <div className="text-neutral-600 text-sm md:text-base font-medium">
+              <div className="text-neutral-600 text-base font-medium">
                 {stat.label.replace('% ', '').replace('%', '')}
               </div>
             </motion.div>

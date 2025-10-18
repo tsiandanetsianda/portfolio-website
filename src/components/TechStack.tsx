@@ -99,17 +99,17 @@ const TechStack = () => {
   const getEmphasisStyles = (emphasis: 'high' | 'medium' | 'low') => {
     // All pills same size now
     return {
-      pill: 'px-4 py-2 text-sm',
-      gap: 'gap-2.5',
+      pill: 'px-4 py-1.5 text-sm',
+      gap: 'gap-2',
     };
   };
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-white">
+    <section ref={sectionRef} className="py-12 md:py-16 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <div className="space-y-12 mb-16">
+          <div className="space-y-4 mb-6">
             <div className="flex items-center space-x-4">
               <div className="h-[1px] bg-border-subtle w-16"></div>
             </div>
@@ -119,7 +119,7 @@ const TechStack = () => {
           </div>
 
           {/* Categories */}
-          <div className="space-y-12">
+          <div className="space-y-4">
             {techCategories.map((category, categoryIndex) => {
               const styles = getEmphasisStyles(category.emphasis);
 
@@ -129,8 +129,8 @@ const TechStack = () => {
                   className="tech-category"
                 >
                   {/* Category Header */}
-                  <div className="mb-6">
-                    <p className="text-sm text-text-secondary mb-4">
+                  <div className="mb-2">
+                    <p className="text-sm text-text-secondary mb-1.5">
                       {category.description}
                     </p>
                   </div>
@@ -161,7 +161,7 @@ const TechStack = () => {
 
                   {/* Divider (except for last category) */}
                   {categoryIndex < techCategories.length - 1 && (
-                    <div className="mt-12 h-[1px] bg-border-subtle"></div>
+                    <div className="mt-4 h-[1px] bg-border-subtle"></div>
                   )}
                 </div>
               );

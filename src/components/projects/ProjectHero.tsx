@@ -69,8 +69,7 @@ export default function ProjectHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-6xl md:text-7xl font-bold tracking-tight mb-6"
-            style={{ color: brandColor }}
+            className="text-7xl md:text-8xl font-semibold tracking-tighter mb-6 text-white"
           >
             {name}
           </motion.h1>
@@ -79,7 +78,7 @@ export default function ProjectHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-neutral-600 max-w-lg"
+            className="text-2xl font-normal text-neutral-600 leading-relaxed max-w-lg"
           >
             {tagline}
           </motion.p>
@@ -101,7 +100,7 @@ export default function ProjectHero({
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="relative w-full aspect-[9/16] max-w-md mx-auto"
+            className="relative w-full aspect-square max-w-md mx-auto"
           >
             {/* Shadow and glow effect */}
             <div

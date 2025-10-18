@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import '@fontsource/playfair-display'
 import '@fontsource/inter'
 import './globals.css'
-import Navbar from '@/components/layout/Navbar'
+import ConditionalNavbar from '@/components/layout/ConditionalNavbar'
 import GradientMesh from '@/components/GradientMesh'
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function RootLayout({
       </head>
       <body className="bg-background text-text-primary font-['Inter']">
         <GradientMesh />
-        <Navbar />
+        <ConditionalNavbar />
         {children}
       </body>
     </html>

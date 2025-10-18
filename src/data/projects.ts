@@ -60,7 +60,7 @@ export const projects: Record<string, Project> = {
     brandColor: '#5AB5E1',
 
     hero: {
-      image: '/UNIINFOSA1.jpg',
+      image: '/info1.JPG',
       background: 'linear-gradient(135deg, #5AB5E1 0%, #4A9FCC 100%)',
     },
 
@@ -92,17 +92,17 @@ export const projects: Record<string, Project> = {
       {
         title: 'Smart Program Search',
         description: 'Find your perfect university program with intelligent filtering and matching algorithms.',
-        video: '/videos/placeholder/sample.mp4',
+        video: '/videos/uni-info-sa/feature1.mp4',
       },
       {
         title: 'University Comparison',
         description: 'Compare programs side-by-side to make informed decisions about your academic future.',
-        video: '/videos/placeholder/sample.mp4',
+        video: '/videos/uni-info-sa/feature2.mp4',
       },
       {
         title: 'Requirements Calculator',
         description: 'Calculate your eligibility for programs based on your current academic performance.',
-        video: '/videos/placeholder/sample.mp4',
+        video: '/videos/uni-info-sa/feature3.mp4',
       },
     ],
 
@@ -242,12 +242,12 @@ export const projects: Record<string, Project> = {
 
   'safepay': {
     slug: 'safepay',
-    name: 'SafePay',
+    name: 'SafePay Connect',
     tagline: 'Secure digital payments made simple',
     brandColor: '#6A63F6',
 
     hero: {
-      image: '/placeholder-safepay-hero.jpg',
+      image: '/SAFEPAY CONNECT LOGO 2.png',
       background: 'linear-gradient(135deg, #6A63F6 0%, #5246E0 100%)',
     },
 
@@ -265,7 +265,7 @@ export const projects: Record<string, Project> = {
 
     solution: {
       title: 'The Solution',
-      description: 'SafePay delivers a cutting-edge payment platform with military-grade encryption, instant transactions, and an intuitive interface for seamless digital payments.',
+      description: 'SafePay Connect delivers a cutting-edge payment platform with military-grade encryption, instant transactions, and an intuitive interface for seamless digital payments.',
       highlights: [
         'End-to-end encryption for all transactions',
         'Instant payment processing and confirmation',

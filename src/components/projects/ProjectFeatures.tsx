@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { Play, Pause, ChevronDown } from 'lucide-react';
 
 interface Feature {
   title: string;
@@ -19,19 +20,91 @@ export default function ProjectFeatures({
   brandColor,
 }: ProjectFeaturesProps) {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isPlayingAll, setIsPlayingAll] = useState(false);
+  const [currentPlayingIndex, setCurrentPlayingIndex] = useState<number | null>(null);
+  const [allVideosCompleted, setAllVideosCompleted] = useState(false);
 
-  // Intersection Observer for video play/pause based on visibility
+  // Play all features sequentially
+  const playAllFeatures = async () => {
+    setIsPlayingAll(true);
+    setAllVideosCompleted(false);
+
+    for (let i = 0; i < features.length; i++) {
+      const video = videoRefs.current[i];
+      const featureElement = featureRefs.current[i];
+
+      if (video && featureElement) {
+        // Disable looping for all videos during "Play All"
+        video.loop = false;
+
+        // Scroll to the feature
+        featureElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+
+        // Wait for scroll to complete
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        setCurrentPlayingIndex(i);
+
+        // Reset video to start
+        video.currentTime = 0;
+
+        // Play the video
+        await video.play().catch(() => {});
+
+        // Wait for video to finish
+        await new Promise<void>((resolve) => {
+          const onEnded = () => {
+            video.removeEventListener('ended', onEnded);
+            resolve();
+          };
+          video.addEventListener('ended', onEnded);
+        });
+
+        // Small pause between videos
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }
+
+    setIsPlayingAll(false);
+    setCurrentPlayingIndex(null);
+    setAllVideosCompleted(true);
+  };
+
+  const stopPlayAll = () => {
+    setIsPlayingAll(false);
+    setCurrentPlayingIndex(null);
+    setAllVideosCompleted(false);
+    videoRefs.current.forEach(video => {
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+        video.loop = true; // Re-enable looping when stopped
+      }
+    });
+  };
+
+  // Intersection Observer for video play/pause based on visibility (only when not playing all)
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    videoRefs.current.forEach((video) => {
+    videoRefs.current.forEach((video, index) => {
       if (video) {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                video.play().catch(() => {});
-              } else {
+              if (!isPlayingAll && !allVideosCompleted) {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                  video.loop = true;
+                  video.play().catch(() => {});
+                } else {
+                  video.pause();
+                }
+              } else if (allVideosCompleted) {
+                // After "Play All" completes, don't auto-play videos
                 video.pause();
               }
             });
@@ -49,84 +122,91 @@ export default function ProjectFeatures({
     return () => {
       observers.forEach((observer) => observer.disconnect());
     };
-  }, [features]);
+  }, [features, isPlayingAll, allVideosCompleted]);
 
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto w-full">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-20 text-neutral-900"
-        >
-          Key Features
-        </motion.h2>
+    <section className="bg-white">
+      <div className="w-full">
+        <div className="flex items-center justify-between py-12 px-6 max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl font-semibold tracking-tight text-neutral-900"
+          >
+            Key Features
+          </motion.h2>
 
-        {/* Vertical Stack of Features */}
-        <div className="space-y-32">
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            onClick={isPlayingAll ? stopPlayAll : playAllFeatures}
+            className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+            style={{ backgroundColor: brandColor }}
+          >
+            {isPlayingAll ? (
+              <>
+                <Pause className="w-5 h-5" />
+                Stop
+              </>
+            ) : (
+              <>
+                <Play className="w-5 h-5" />
+                Play All
+              </>
+            )}
+          </motion.button>
+        </div>
+
+        {/* Fullscreen Video Stack */}
+        <div className="space-y-0">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              ref={(el) => {
+                featureRefs.current[index] = el;
+              }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="grid md:grid-cols-2 gap-12 items-center"
+              transition={{ duration: 0.8 }}
+              className="relative w-full h-screen"
             >
-              {/* Text Content - Left Side */}
-              <div className="space-y-6">
-                <h3
-                  className="text-3xl md:text-4xl font-bold"
-                  style={{ color: brandColor }}
-                >
-                  {feature.title}
-                </h3>
-                <p className="text-xl text-neutral-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-
-              {/* Video - Right Side */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-              >
-                {/* Glow Effect */}
-                <div
-                  className="absolute -inset-4 rounded-3xl blur-2xl opacity-20"
-                  style={{ backgroundColor: brandColor }}
+              {/* Fullscreen Video Container */}
+              <div className="relative w-full h-full">
+                <video
+                  ref={(el) => {
+                    videoRefs.current[index] = el;
+                  }}
+                  src={feature.video}
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
                 />
 
-                {/* Video Container with Device Frame Feel */}
-                <motion.div
-                  animate={{
-                    y: [0, -8, 0],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: index * 0.2,
-                  }}
-                  className="relative aspect-[9/16] max-w-sm mx-auto rounded-3xl overflow-hidden shadow-2xl bg-black"
-                >
-                  <video
-                    ref={(el) => {
-                      videoRefs.current[index] = el;
-                    }}
-                    src={feature.video}
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              </motion.div>
+                {/* Scroll Indicator - shown on last video after "Play All" completes */}
+                {allVideosCompleted && index === features.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                  >
+                    <p className="text-black text-lg font-medium drop-shadow-lg">
+                      Scroll to continue
+                    </p>
+                    <motion.div
+                      animate={{ y: [0, 10, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <ChevronDown className="w-8 h-8 text-black drop-shadow-lg" />
+                    </motion.div>
+                  </motion.div>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>

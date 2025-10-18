@@ -24,19 +24,19 @@ export default function ProjectTechStack({
   };
 
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-12 md:py-16 px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-16 text-neutral-900"
+          className="text-5xl font-semibold tracking-tight mb-6 text-neutral-900"
         >
           Built With
         </motion.h2>
 
-        <div className="space-y-12">
+        <div className="space-y-4">
           {categories.map((category, categoryIndex) => {
             const techs = getTechsByCategory(category);
             if (techs.length === 0) return null;
@@ -50,12 +50,12 @@ export default function ProjectTechStack({
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               >
                 {/* Category Label */}
-                <p className="text-sm text-neutral-500 mb-4">
+                <p className="text-sm text-neutral-500 mb-1.5">
                   {category}
                 </p>
 
                 {/* Technologies - Simple Pills */}
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {techs.map((tech, index) => (
                     <motion.div
                       key={index}
@@ -71,7 +71,7 @@ export default function ProjectTechStack({
                         borderColor: brandColor,
                         transition: { duration: 0.2 },
                       }}
-                      className="px-4 py-2 text-sm rounded-lg border border-neutral-200 bg-white
+                      className="px-4 py-1.5 text-sm rounded-lg border border-neutral-200 bg-white
                         font-medium text-neutral-900 transition-all duration-300
                         hover:shadow-sm cursor-default"
                     >
@@ -82,7 +82,7 @@ export default function ProjectTechStack({
 
                 {/* Divider (except for last category) */}
                 {categoryIndex < categories.filter(cat => getTechsByCategory(cat).length > 0).length - 1 && (
-                  <div className="mt-12 h-[1px] bg-neutral-200"></div>
+                  <div className="mt-4 h-[1px] bg-neutral-200"></div>
                 )}
               </motion.div>
             );

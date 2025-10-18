@@ -12,14 +12,14 @@ export default function ProjectAdditionalFeatures({
   brandColor,
 }: ProjectAdditionalFeaturesProps) {
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 bg-neutral-50">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold mb-12 text-neutral-900"
+          className="text-4xl font-semibold tracking-tight mb-12 text-neutral-900"
         >
           More Features
         </motion.h2>
@@ -44,7 +44,7 @@ export default function ProjectAdditionalFeatures({
                 hidden: { opacity: 0, y: 10 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="flex items-center gap-3 text-neutral-700 text-lg"
+              className="flex items-center gap-3 text-neutral-700 text-lg font-normal"
             >
               <div
                 className="w-2 h-2 rounded-full flex-shrink-0"

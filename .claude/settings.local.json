@@ -6,7 +6,8 @@
       "Read(//c/Users/tsian/OneDrive - University of Cape Town/2025/Applications/**)",
       "WebFetch(domain:www.apple.com)",
       "Bash(mkdir:*)",
-      "Bash(ffmpeg:*)"
+      "Bash(ffmpeg:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

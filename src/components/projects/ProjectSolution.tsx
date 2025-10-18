@@ -41,7 +41,7 @@ export default function ProjectSolution({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-8 text-neutral-900"
+          className="text-5xl font-semibold tracking-tight mb-8 text-neutral-900"
         >
           {title}
         </motion.h2>
@@ -51,7 +51,7 @@ export default function ProjectSolution({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl text-neutral-600 mb-16 max-w-3xl mx-auto leading-relaxed"
+          className="text-2xl font-normal text-neutral-600 mb-16 max-w-3xl mx-auto leading-relaxed"
         >
           {description}
         </motion.p>
@@ -87,7 +87,7 @@ export default function ProjectSolution({
                 >
                   {index + 1}
                 </div>
-                <p className="text-neutral-700 leading-relaxed">{highlight}</p>
+                <p className="text-lg font-normal text-neutral-700 leading-relaxed">{highlight}</p>
               </div>
             </motion.div>
           ))}

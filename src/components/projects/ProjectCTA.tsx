@@ -83,10 +83,10 @@ export default function ProjectCTA({
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-5xl font-semibold tracking-tight mb-6 text-center">
             Experience {projectName}
           </h2>
-          <p className="text-xl mb-12 opacity-90">
+          <p className="text-xl font-normal mb-12 opacity-90 text-center ml-8">
             Explore the project and see it in action
           </p>
 
@@ -117,7 +117,7 @@ export default function ProjectCTA({
                   }}
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 rounded-full font-medium text-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-900 rounded-full font-semibold text-base shadow-xl hover:shadow-2xl transition-shadow"
                 >
                   {button.icon}
                   <span>{button.label}</span>
