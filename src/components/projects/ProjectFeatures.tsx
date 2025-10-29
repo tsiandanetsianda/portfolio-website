@@ -13,11 +13,13 @@ interface Feature {
 interface ProjectFeaturesProps {
   features: Feature[];
   brandColor: string;
+  hidePlayAll?: boolean;
 }
 
 export default function ProjectFeatures({
   features,
   brandColor,
+  hidePlayAll = false,
 }: ProjectFeaturesProps) {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -138,27 +140,29 @@ export default function ProjectFeatures({
             Key Features
           </motion.h2>
 
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            onClick={isPlayingAll ? stopPlayAll : playAllFeatures}
-            className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
-            style={{ backgroundColor: brandColor }}
-          >
-            {isPlayingAll ? (
-              <>
-                <Pause className="w-5 h-5" />
-                Stop
-              </>
-            ) : (
-              <>
-                <Play className="w-5 h-5" />
-                Play All
-              </>
-            )}
-          </motion.button>
+          {!hidePlayAll && (
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              onClick={isPlayingAll ? stopPlayAll : playAllFeatures}
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+              style={{ backgroundColor: brandColor }}
+            >
+              {isPlayingAll ? (
+                <>
+                  <Pause className="w-5 h-5" />
+                  Stop
+                </>
+              ) : (
+                <>
+                  <Play className="w-5 h-5" />
+                  Play All
+                </>
+              )}
+            </motion.button>
+          )}
         </div>
 
         {/* Fullscreen Video Stack */}

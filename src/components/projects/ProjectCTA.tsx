@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SiApple, SiGoogleplay, SiGithub } from 'react-icons/si';
+import { SiApple, SiGoogleplay, SiGithub, SiYoutube, SiTiktok } from 'react-icons/si';
 import { HiExternalLink, HiDocumentText } from 'react-icons/hi';
 
 interface Links {
@@ -10,6 +10,8 @@ interface Links {
   github?: string;
   demo?: string;
   pdf?: string;
+  youtube?: string;
+  tiktok?: string;
 }
 
 interface ProjectCTAProps {
@@ -54,6 +56,18 @@ export default function ProjectCTA({
       url: links.github,
       icon: <SiGithub className="w-6 h-6" />,
       label: 'GitHub',
+    },
+    {
+      key: 'youtube',
+      url: links.youtube,
+      icon: <SiYoutube className="w-6 h-6" />,
+      label: 'YouTube',
+    },
+    {
+      key: 'tiktok',
+      url: links.tiktok,
+      icon: <SiTiktok className="w-6 h-6" />,
+      label: 'TikTok',
     },
     {
       key: 'demo',

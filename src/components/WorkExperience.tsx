@@ -28,7 +28,7 @@ const experiences: Experience[] = [
     company: 'MOHARA',
     role: 'Software Engineer Intern',
     type: 'Internship',
-    duration: 'Jul 2025 - Oct 2025 · 4 months',
+    duration: 'Jul 2025 - Sep 2025 · 3 months',
     location: 'City of Cape Town, Western Cape, South Africa · Hybrid',
     logo: '/MOHARA-LOGO-2.png',
     description: 'Worked on an enterprise platform that tracks time and manages resources across teams.',

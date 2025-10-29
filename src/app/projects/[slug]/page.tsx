@@ -8,7 +8,6 @@ import ProjectFeatures from '@/components/projects/ProjectFeatures';
 import ProjectAdditionalFeatures from '@/components/projects/ProjectAdditionalFeatures';
 import ProjectTechStack from '@/components/projects/ProjectTechStack';
 import ProjectStats from '@/components/projects/ProjectStats';
-import ProjectGallery from '@/components/projects/ProjectGallery';
 import ProjectCTA from '@/components/projects/ProjectCTA';
 
 interface ProjectPageProps {
@@ -54,17 +53,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <ProjectFeatures
         features={project.features}
         brandColor={project.brandColor}
+        hidePlayAll={project.slug === 'seaclear'}
       />
 
-      <ProjectAdditionalFeatures
-        features={project.additionalFeatures}
-        brandColor={project.brandColor}
-      />
-
-      <ProjectGallery
-        screenshots={project.screenshots}
-        brandColor={project.brandColor}
-      />
+      {project.slug !== 'seaclear' && (
+        <ProjectAdditionalFeatures
+          features={project.additionalFeatures}
+          screenshots={project.additionalFeatures.length > 0 ? project.additionalFeatures : project.screenshots}
+          brandColor={project.brandColor}
+        />
+      )}
 
       <ProjectStats
         stats={project.impact}

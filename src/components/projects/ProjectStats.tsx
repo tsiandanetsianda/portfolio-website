@@ -13,6 +13,10 @@ interface ProjectStatsProps {
   brandColor: string;
 }
 
+const isWinnerStat = (label: string) => {
+  return label.includes('🏆') || label.toLowerCase().includes('winner') || label.toLowerCase().includes('hackathon');
+};
+
 function NumberCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
   const [count, setCount] = useState(0);
   const countRef = useRef<HTMLDivElement>(null);
@@ -58,11 +62,21 @@ function NumberCounter({ end, duration = 2000 }: { end: number; duration?: numbe
   }, [end, duration]);
 
   return (
-    <div ref={countRef}>
+    <span ref={countRef as React.RefObject<HTMLSpanElement>}>
       {count.toLocaleString()}
-    </div>
+    </span>
   );
 }
+
+// Parse achievement label for trophy section
+const parseAchievement = (label: string) => {
+  // Example: "🏆 InterVarsity Hackathon 2025 - FinTech Winner"
+  const parts = label.split('-').map(s => s.trim());
+  const event = parts[0]?.replace('🏆', '').trim() || '';
+  const category = parts[1]?.replace('Winner', '').trim() || '';
+
+  return { event, category };
+};
 
 export default function ProjectStats({
   stats,
@@ -81,6 +95,185 @@ export default function ProjectStats({
 
   const rgb = hexToRgb(brandColor);
 
+  // Check if this is a winner achievement
+  const hasWinner = stats.some(stat => isWinnerStat(stat.label));
+  const winnerStat = stats.find(stat => isWinnerStat(stat.label));
+
+  if (hasWinner && winnerStat) {
+    const { event, category } = parseAchievement(winnerStat.label);
+
+    return (
+      <section
+        className="h-screen py-16 px-6 flex items-center justify-center relative overflow-hidden"
+        style={{
+          background: `linear-gradient(135deg, rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.05) 0%, rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.1) 100%)`,
+        }}
+      >
+        {/* Light rays from trophy */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute top-1/2 left-1/2 w-1 origin-left"
+            style={{
+              height: '120vh',
+              background: `linear-gradient(to bottom, rgba(255, 215, 0, 0.15), transparent)`,
+              transform: `rotate(${i * 45}deg)`,
+            }}
+            animate={{
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: i * 0.2,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
+        {/* Confetti particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`confetti-${i}`}
+            className="absolute w-3 h-3"
+            style={{
+              background: ['#FFD700', '#FFA500', '#FF6B6B', '#4ECDC4', '#FFE66D'][i % 5],
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              borderRadius: i % 2 === 0 ? '50%' : '0%',
+            }}
+            animate={{
+              y: [0, -20, 20, 0],
+              x: [0, Math.random() * 30 - 15, 0],
+              rotate: [0, 360],
+              opacity: [0, 1, 1, 0],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
+        <div className="max-w-5xl mx-auto w-full relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-semibold tracking-tight mb-12 text-neutral-900 text-center"
+          >
+            Impact & Achievements
+          </motion.h2>
+
+          <div className="text-center flex flex-col items-center justify-center">
+            {/* Trophy emoji with glow */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0, y: -50 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                type: "spring",
+                stiffness: 150,
+                delay: 0.2
+              }}
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                y: {
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }
+              }}
+              className="relative mb-8"
+            >
+              <motion.div
+                animate={{
+                  boxShadow: [
+                    '0 0 40px rgba(255, 215, 0, 0.4)',
+                    '0 0 80px rgba(255, 215, 0, 0.6)',
+                    '0 0 40px rgba(255, 215, 0, 0.4)',
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="text-9xl md:text-[180px] leading-none inline-block rounded-full"
+              >
+                🏆
+              </motion.div>
+            </motion.div>
+
+            {/* #1 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.7,
+                type: "spring",
+                stiffness: 120,
+                delay: 0.4
+              }}
+              className="mb-6"
+            >
+              <motion.div
+                animate={{
+                  textShadow: [
+                    '0 0 30px rgba(255, 215, 0, 0.4)',
+                    '0 0 50px rgba(255, 215, 0, 0.6)',
+                    '0 0 30px rgba(255, 215, 0, 0.4)',
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="text-[120px] md:text-[160px] font-black leading-none tracking-tighter bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent"
+              >
+                #<NumberCounter end={winnerStat.value} duration={1500} />
+              </motion.div>
+            </motion.div>
+
+            {/* Category */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mb-4"
+            >
+              <div className="text-4xl md:text-5xl font-bold text-neutral-800 tracking-tight">
+                {category}
+              </div>
+            </motion.div>
+
+            {/* Event name */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <div className="text-xl md:text-2xl font-medium text-neutral-600 tracking-wide">
+                {event}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Default rendering for non-winner stats
   return (
     <section
       className="min-h-screen py-24 px-6 flex items-center"
@@ -111,7 +304,13 @@ export default function ProjectStats({
               },
             },
           }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          className={`grid gap-8 max-w-4xl mx-auto ${
+            stats.length === 1
+              ? 'grid-cols-1 max-w-md justify-items-center'
+              : stats.length === 2
+              ? 'grid-cols-1 md:grid-cols-2'
+              : 'grid-cols-1 md:grid-cols-3'
+          }`}
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -121,7 +320,7 @@ export default function ProjectStats({
                 visible: { opacity: 1, y: 0, scale: 1 },
               }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow text-center"
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow text-center w-full"
             >
               <div
                 className="text-6xl font-semibold tracking-tighter mb-3"

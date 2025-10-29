@@ -7,7 +7,12 @@
       "WebFetch(domain:www.apple.com)",
       "Bash(mkdir:*)",
       "Bash(ffmpeg:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Read(//c/Users/tsian/OneDrive - University of Cape Town/Student Advisor/Screenshots/Final Screenshots - Campus Life/**)",
+      "Read(//c/Users/tsian/OneDrive - University of Cape Town/Portfolio Website/App screenshots/GridSmart More/**)",
+      "Read(//c/Users/tsian/OneDrive - University of Cape Town/Portfolio Website/App screenshots/SafePay More/**)",
+      "Read(//c/Users/tsian/OneDrive - University of Cape Town/2025/BlockDag Hackathon/BlockDag/**)",
+      "Read(//c/Users/tsian/OneDrive - University of Cape Town/Portfolio Website/Videos/**)"
     ],
     "deny": [],
     "ask": []
