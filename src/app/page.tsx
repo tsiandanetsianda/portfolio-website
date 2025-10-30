@@ -194,10 +194,10 @@ export default function Home() {
                 Education
               </h2>
               <div className="content-wrapper">
-                <div className="card-reflection flex flex-col lg:flex-row items-center gap-12 bg-white border border-border rounded-2xl p-12 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
-                  <div className="flex-1 space-y-8">
-                    <h3 className="text-3xl font-semibold text-text-primary">BSc Computer Science and Computer Engineering</h3>
-                    <p className="text-lg text-text-secondary leading-relaxed">Currently pursuing studies in software systems, algorithms, machine learning, embedded systems, and digital electronics at the University of Cape Town.</p>
+                <div className="card-reflection flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-white border border-border rounded-2xl p-6 md:p-12 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                  <div className="flex-1 space-y-6 md:space-y-8">
+                    <h3 className="text-2xl md:text-3xl font-semibold text-text-primary">BSc Computer Science and Computer Engineering</h3>
+                    <p className="text-base md:text-lg text-text-secondary leading-relaxed">Currently pursuing studies in software systems, algorithms, machine learning, embedded systems, and digital electronics at the University of Cape Town.</p>
                     <a
                       href="https://drive.google.com/file/d/1i6olrhExjdm2bH8Bs6JmheQg7uYKMAby/view?usp=sharing"
                       target="_blank"
@@ -210,12 +210,12 @@ export default function Home() {
                       </svg>
                     </a>
                   </div>
-                  <div className="relative h-64 w-64 overflow-hidden rounded-lg flex-shrink-0">
+                  <div className="relative h-40 w-40 md:h-56 md:w-56 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/UCT-LOGO-2.png"
                       alt="University of Cape Town"
                       fill
-                      className="object-contain p-4"
+                      className="object-contain p-3 md:p-4"
                     />
                   </div>
                 </div>
@@ -238,7 +238,7 @@ export default function Home() {
 
               <div className="space-y-3">
                 {/* GitHub Certificate */}
-                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                <div className="card-reflection flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white border border-border rounded-xl p-4 sm:p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
                     <div className="space-y-3">
                       <h4 className="text-lg font-semibold text-text-primary">Career Essentials in GitHub</h4>
@@ -256,7 +256,7 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
+                  <div className="relative h-24 w-24 sm:h-28 sm:w-28 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/Github1.jpg"
                       alt="GitHub Certification"
@@ -267,7 +267,7 @@ export default function Home() {
                 </div>
 
                 {/* Microsoft Certificate */}
-                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                <div className="card-reflection flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white border border-border rounded-xl p-4 sm:p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
                     <div className="space-y-3">
                       <h4 className="text-lg font-semibold text-text-primary">Career Essentials in Cybersecurity</h4>
@@ -285,7 +285,7 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
+                  <div className="relative h-24 w-24 sm:h-28 sm:w-28 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/Microsoft1.jpg"
                       alt="Microsoft Cybersecurity Certification"
@@ -296,7 +296,7 @@ export default function Home() {
                 </div>
 
                 {/* Docker Certificate */}
-                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                <div className="card-reflection flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white border border-border rounded-xl p-4 sm:p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
                     <div className="space-y-3">
                       <h4 className="text-lg font-semibold text-text-primary">Docker Foundations</h4>
@@ -314,7 +314,7 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
+                  <div className="relative h-24 w-24 sm:h-28 sm:w-28 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/Docker1.png"
                       alt="Docker Certification"
@@ -325,7 +325,7 @@ export default function Home() {
                 </div>
 
                 {/* FNB App Academy Certificate */}
-                <div className="card-reflection flex flex-col lg:flex-row items-center gap-6 bg-white border border-border rounded-xl p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
+                <div className="card-reflection flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-white border border-border rounded-xl p-4 sm:p-6 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1">
                     <div className="space-y-3">
                       <h4 className="text-lg font-semibold text-text-primary">FNB App Academy 2025</h4>
@@ -343,7 +343,7 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="relative h-32 w-32 overflow-hidden rounded-lg flex-shrink-0">
+                  <div className="relative h-24 w-24 sm:h-28 sm:w-28 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
                       src="/FNB-LOGO.jpg"
                       alt="FNB App Academy Certification"
@@ -366,7 +366,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
-            <div className="space-y-16 mb-32">
+            <div className="space-y-8 md:space-y-16 mb-12 md:mb-32">
               <div className="flex items-center space-x-4">
                 <div className="h-[1px] bg-border-subtle w-16"></div>
               </div>
@@ -375,9 +375,9 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="space-y-32 md:space-y-40">
+            <div className="space-y-12 md:space-y-24 lg:space-y-32">
             {/* Project 1 - Uni Info SA */}
-            <section ref={project1Ref} className="min-h-screen flex items-center justify-center">
+            <section ref={project1Ref} className="min-h-0 md:min-h-screen flex items-center justify-center">
               <Link
                 href="/projects/uni-info-sa"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
@@ -408,7 +408,7 @@ export default function Home() {
             </section>
 
             {/* Project 2 - Biki */}
-            <section ref={project2Ref} className="min-h-screen flex items-center justify-center">
+            <section ref={project2Ref} className="min-h-0 md:min-h-screen flex items-center justify-center">
               <Link
                 href="/projects/biki"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
@@ -439,7 +439,7 @@ export default function Home() {
             </section>
 
             {/* Project 3 - SafePay */}
-            <section ref={project3Ref} className="min-h-screen flex items-center justify-center">
+            <section ref={project3Ref} className="min-h-0 md:min-h-screen flex items-center justify-center">
               <Link
                 href="/projects/safepay"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
@@ -470,7 +470,7 @@ export default function Home() {
             </section>
 
             {/* Project 4 - SeaClear */}
-            <section ref={project4Ref} className="min-h-screen flex items-center justify-center">
+            <section ref={project4Ref} className="min-h-0 md:min-h-screen flex items-center justify-center">
               <Link
                 href="/projects/seaclear"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"
@@ -501,7 +501,7 @@ export default function Home() {
             </section>
 
             {/* Project 5 - GridSmart */}
-            <section ref={project5Ref} className="min-h-screen flex items-center justify-center">
+            <section ref={project5Ref} className="min-h-0 md:min-h-screen flex items-center justify-center">
               <Link
                 href="/projects/gridsmart"
                 className="group relative w-full max-w-5xl transition-all duration-350 hover:scale-[1.02] cursor-pointer"

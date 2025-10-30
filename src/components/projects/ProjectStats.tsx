@@ -82,6 +82,12 @@ export default function ProjectStats({
   stats,
   brandColor,
 }: ProjectStatsProps) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const hexToRgb = (hex: string) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
@@ -109,8 +115,8 @@ export default function ProjectStats({
           background: `linear-gradient(135deg, rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.05) 0%, rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.1) 100%)`,
         }}
       >
-        {/* Light rays from trophy */}
-        {[...Array(8)].map((_, i) => (
+        {/* Light rays from trophy - only render on client to avoid hydration mismatch */}
+        {isMounted && [...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute top-1/2 left-1/2 w-1 origin-left"
@@ -131,8 +137,8 @@ export default function ProjectStats({
           />
         ))}
 
-        {/* Confetti particles */}
-        {[...Array(20)].map((_, i) => (
+        {/* Confetti particles - only render on client to avoid hydration mismatch */}
+        {isMounted && [...Array(20)].map((_, i) => (
           <motion.div
             key={`confetti-${i}`}
             className="absolute w-3 h-3"
@@ -163,12 +169,12 @@ export default function ProjectStats({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-semibold tracking-tight mb-12 text-neutral-900 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-8 sm:mb-12 text-neutral-900 text-center px-4"
           >
             Impact & Achievements
           </motion.h2>
 
-          <div className="text-center flex flex-col items-center justify-center">
+          <div className="text-center flex flex-col items-center justify-center px-4">
             {/* Trophy emoji with glow */}
             <motion.div
               initial={{ opacity: 0, scale: 0, y: -50 }}
@@ -190,7 +196,7 @@ export default function ProjectStats({
                   ease: "easeInOut"
                 }
               }}
-              className="relative mb-8"
+              className="relative mb-6 sm:mb-8"
             >
               <motion.div
                 animate={{
@@ -205,7 +211,7 @@ export default function ProjectStats({
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="text-9xl md:text-[180px] leading-none inline-block rounded-full"
+                className="text-7xl sm:text-8xl md:text-9xl lg:text-[180px] leading-none inline-block rounded-full"
               >
                 🏆
               </motion.div>
@@ -222,7 +228,7 @@ export default function ProjectStats({
                 stiffness: 120,
                 delay: 0.4
               }}
-              className="mb-6"
+              className="mb-4 sm:mb-6"
             >
               <motion.div
                 animate={{
@@ -237,7 +243,7 @@ export default function ProjectStats({
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="text-[120px] md:text-[160px] font-black leading-none tracking-tighter bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent"
+                className="text-[80px] sm:text-[100px] md:text-[120px] lg:text-[160px] font-black leading-none tracking-tighter bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent"
               >
                 #<NumberCounter end={winnerStat.value} duration={1500} />
               </motion.div>
@@ -249,9 +255,9 @@ export default function ProjectStats({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mb-4"
+              className="mb-3 sm:mb-4"
             >
-              <div className="text-4xl md:text-5xl font-bold text-neutral-800 tracking-tight">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 tracking-tight">
                 {category}
               </div>
             </motion.div>
@@ -263,7 +269,7 @@ export default function ProjectStats({
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <div className="text-xl md:text-2xl font-medium text-neutral-600 tracking-wide">
+              <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-neutral-600 tracking-wide">
                 {event}
               </div>
             </motion.div>
@@ -276,7 +282,7 @@ export default function ProjectStats({
   // Default rendering for non-winner stats
   return (
     <section
-      className="min-h-screen py-24 px-6 flex items-center"
+      className="min-h-screen py-16 sm:py-20 md:py-24 px-4 sm:px-6 flex items-center"
       style={{
         background: `linear-gradient(135deg, rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.05) 0%, rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.1) 100%)`,
       }}
@@ -287,7 +293,7 @@ export default function ProjectStats({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-5xl font-semibold tracking-tight mb-16 text-neutral-900 text-center"
+          className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-10 sm:mb-12 md:mb-16 text-neutral-900 text-center"
         >
           Impact & Achievements
         </motion.h2>
@@ -304,12 +310,12 @@ export default function ProjectStats({
               },
             },
           }}
-          className={`grid gap-8 max-w-4xl mx-auto ${
+          className={`grid gap-6 sm:gap-8 max-w-4xl mx-auto ${
             stats.length === 1
               ? 'grid-cols-1 max-w-md justify-items-center'
               : stats.length === 2
               ? 'grid-cols-1 md:grid-cols-2'
-              : 'grid-cols-1 md:grid-cols-3'
+              : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
           }`}
         >
           {stats.map((stat, index) => (
@@ -320,17 +326,17 @@ export default function ProjectStats({
                 visible: { opacity: 1, y: 0, scale: 1 },
               }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow text-center w-full"
+              className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-shadow text-center w-full"
             >
               <div
-                className="text-6xl font-semibold tracking-tighter mb-3"
+                className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tighter mb-2 sm:mb-3"
                 style={{ color: brandColor }}
               >
                 <NumberCounter end={stat.value} />
                 {stat.value >= 100 && stat.label !== '% Satisfaction' && '+'}
                 {stat.label.includes('%') && '%'}
               </div>
-              <div className="text-neutral-600 text-base font-medium">
+              <div className="text-neutral-600 text-sm sm:text-base font-medium">
                 {stat.label.replace('% ', '').replace('%', '')}
               </div>
             </motion.div>

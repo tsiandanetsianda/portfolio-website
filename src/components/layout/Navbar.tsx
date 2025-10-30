@@ -79,15 +79,15 @@ const Navbar = () => {
   }
 
   return (
-    <div className="fixed top-0 w-full flex justify-end px-6 z-50">
-      <div className="mt-4 mr-12">
-        <nav className="glass px-3 py-2 rounded-full shadow-sm">
-          <ul className="flex space-x-1">
+    <div className="fixed top-0 w-full flex justify-end px-3 sm:px-6 z-50">
+      <div className="mt-4 mr-0 sm:mr-6 md:mr-12">
+        <nav className="hidden lg:block glass px-2 sm:px-3 py-2 rounded-full shadow-sm">
+          <ul className="flex space-x-0.5 sm:space-x-1">
             {navItems.map((item) => (
               <li key={item.title}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`group relative px-3 py-1.5 transition-colors duration-300
+                  className={`group relative px-2 sm:px-3 py-1.5 transition-colors duration-300
                     ${activeSection === item.id ?
                       'text-brand font-semibold' :
                       'text-text-secondary hover:text-text-primary'

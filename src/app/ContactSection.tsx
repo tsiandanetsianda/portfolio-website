@@ -37,16 +37,16 @@ const ContactSection = () => {
                   href="mailto:tsiandanetsianda@gmail.com"
                   className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="space-y-3 flex-1 min-w-0">
                       <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
                         Email
                       </span>
-                      <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
+                      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300 break-all sm:break-normal">
                         tsiandanetsianda@gmail.com
                       </p>
                     </div>
-                    <Mail className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-brand group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
                   </div>
                 </a>
               </MagneticButton>
@@ -64,16 +64,16 @@ const ContactSection = () => {
                   rel="noopener noreferrer"
                   className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="space-y-3 flex-1 min-w-0">
                       <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
                         LinkedIn
                       </span>
-                      <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
+                      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
                         Connect with me
                       </p>
                     </div>
-                    <LinkedinIcon className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
+                    <LinkedinIcon className="w-5 h-5 sm:w-6 sm:h-6 text-brand group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
                   </div>
                 </a>
               </MagneticButton>
@@ -90,16 +90,16 @@ const ContactSection = () => {
                   download
                   className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="space-y-3 flex-1 min-w-0">
                       <span className="text-sm uppercase tracking-[0.15em] text-text-tertiary font-medium">
                         Resume
                       </span>
-                      <p className="text-2xl md:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
+                      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-brand font-medium group-hover:-translate-y-1 transition-transform duration-300">
                         Download my CV
                       </p>
                     </div>
-                    <Download className="w-6 h-6 text-brand group-hover:scale-110 transition-transform duration-300" />
+                    <Download className="w-5 h-5 sm:w-6 sm:h-6 text-brand group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
                   </div>
                 </a>
               </MagneticButton>

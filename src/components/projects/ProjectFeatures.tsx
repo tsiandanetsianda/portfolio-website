@@ -26,6 +26,7 @@ export default function ProjectFeatures({
   const [isPlayingAll, setIsPlayingAll] = useState(false);
   const [currentPlayingIndex, setCurrentPlayingIndex] = useState<number | null>(null);
   const [allVideosCompleted, setAllVideosCompleted] = useState(false);
+  const [activeVideoIndex, setActiveVideoIndex] = useState<number | null>(null);
 
   // Play all features sequentially
   const playAllFeatures = async () => {
@@ -89,6 +90,15 @@ export default function ProjectFeatures({
     });
   };
 
+  // Helper function to pause all videos except the specified index
+  const pauseAllVideosExcept = (exceptIndex: number) => {
+    videoRefs.current.forEach((video, index) => {
+      if (video && index !== exceptIndex) {
+        video.pause();
+      }
+    });
+  };
+
   // Intersection Observer for video play/pause based on visibility (only when not playing all)
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -100,8 +110,18 @@ export default function ProjectFeatures({
             entries.forEach((entry) => {
               if (!isPlayingAll && !allVideosCompleted) {
                 if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                  // Pause all other videos before playing this one
+                  pauseAllVideosExcept(index);
+                  setActiveVideoIndex(index);
                   video.loop = true;
-                  video.play().catch(() => {});
+                  // Ensure video is loaded before playing
+                  if (video.readyState >= 2) {
+                    video.play().catch(() => {});
+                  } else {
+                    video.addEventListener('loadeddata', () => {
+                      video.play().catch(() => {});
+                    }, { once: true });
+                  }
                 } else {
                   video.pause();
                 }
@@ -113,6 +133,7 @@ export default function ProjectFeatures({
           },
           {
             threshold: 0.3,
+            rootMargin: '0px 0px -10% 0px'
           }
         );
 
@@ -129,13 +150,13 @@ export default function ProjectFeatures({
   return (
     <section className="bg-white">
       <div className="w-full">
-        <div className="flex items-center justify-between py-12 px-6 max-w-7xl mx-auto">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 py-8 sm:py-10 md:py-12 px-4 sm:px-6 max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-5xl font-semibold tracking-tight text-neutral-900"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-neutral-900"
           >
             Key Features
           </motion.h2>
@@ -147,17 +168,17 @@ export default function ProjectFeatures({
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
               onClick={isPlayingAll ? stopPlayAll : playAllFeatures}
-              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+              className="flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-medium text-sm sm:text-base text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
               style={{ backgroundColor: brandColor }}
             >
               {isPlayingAll ? (
                 <>
-                  <Pause className="w-5 h-5" />
+                  <Pause className="w-4 h-4 sm:w-5 sm:h-5" />
                   Stop
                 </>
               ) : (
                 <>
-                  <Play className="w-5 h-5" />
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5" />
                   Play All
                 </>
               )}
@@ -177,7 +198,7 @@ export default function ProjectFeatures({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8 }}
-              className="relative w-full h-screen"
+              className="relative w-full h-auto xl:h-screen"
             >
               {/* Fullscreen Video Container */}
               <div className="relative w-full h-full">
@@ -188,7 +209,7 @@ export default function ProjectFeatures({
                   src={feature.video}
                   muted
                   playsInline
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto xl:h-full xl:object-cover"
                 />
 
                 {/* Scroll Indicator - shown on last video after "Play All" completes */}
@@ -197,16 +218,16 @@ export default function ProjectFeatures({
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                    className="hidden xl:flex absolute bottom-12 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
                   >
-                    <p className="text-black text-lg font-medium drop-shadow-lg">
+                    <p className="text-black text-sm sm:text-base md:text-lg font-medium drop-shadow-lg">
                       Scroll to continue
                     </p>
                     <motion.div
                       animate={{ y: [0, 10, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      <ChevronDown className="w-8 h-8 text-black drop-shadow-lg" />
+                      <ChevronDown className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-black drop-shadow-lg" />
                     </motion.div>
                   </motion.div>
                 )}

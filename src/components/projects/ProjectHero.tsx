@@ -57,19 +57,19 @@ export default function ProjectHero({
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-left"
+          className="text-center md:text-left"
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-7xl md:text-8xl font-semibold tracking-tighter mb-6 text-white"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tighter mb-4 sm:mb-6 text-white"
           >
             {name}
           </motion.h1>
@@ -78,7 +78,7 @@ export default function ProjectHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-2xl font-normal text-neutral-600 leading-relaxed max-w-lg"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-neutral-600 leading-relaxed max-w-lg"
           >
             {tagline}
           </motion.p>
@@ -100,16 +100,16 @@ export default function ProjectHero({
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="relative w-full aspect-square max-w-md mx-auto"
+            className="relative w-full aspect-square max-w-[280px] sm:max-w-sm md:max-w-md mx-auto"
           >
             {/* Shadow and glow effect */}
             <div
-              className="absolute -inset-4 rounded-3xl blur-2xl opacity-30"
+              className="absolute -inset-3 sm:-inset-4 rounded-2xl sm:rounded-3xl blur-xl sm:blur-2xl opacity-30"
               style={{ backgroundColor: brandColor }}
             />
 
             {/* Image Container */}
-            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src={heroImage}
                 alt={`${name} preview`}
@@ -127,16 +127,16 @@ export default function ProjectHero({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 rounded-full flex items-start justify-center p-2"
+          className="w-5 h-8 sm:w-6 sm:h-10 border-2 rounded-full flex items-start justify-center p-1.5 sm:p-2"
           style={{ borderColor: brandColor }}
         >
           <motion.div
-            className="w-1.5 h-1.5 rounded-full"
+            className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full"
             style={{ backgroundColor: brandColor }}
           />
         </motion.div>
