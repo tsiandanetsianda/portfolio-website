@@ -86,8 +86,10 @@ const ContactSection = () => {
             >
               <MagneticButton strength={0.15}>
                 <a
-                  href="/cv.pdf"
-                  download
+                  href="https://drive.google.com/uc?export=download&id=1KV5z_6K2_j9PseiC-fofNXN8jfdHRtzI"
+                  download="Tsianda_Netsianda_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group block border-t border-border py-10 hover:border-brand transition-colors duration-350"
                 >
                   <div className="flex items-center justify-between gap-3">
