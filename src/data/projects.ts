@@ -234,7 +234,6 @@ export const projects: Record<string, Project> = {
       { name: 'Scikit-learn', icon: 'SiScikitlearn', category: 'Backend' },
       { name: 'YOLO', icon: 'SiYolo', category: 'Backend' },
       { name: 'Raspberry Pi', icon: 'SiRaspberrypi', category: 'Infrastructure' },
-      { name: 'Docker', icon: 'SiDocker', category: 'Infrastructure' },
       { name: 'Git', icon: 'SiGit', category: 'Tools' },
       { name: 'Pytest', icon: 'SiPytest', category: 'Tools' },
     ],
@@ -252,8 +251,7 @@ export const projects: Record<string, Project> = {
     ],
 
     links: {
-      github: 'https://github.com/yourusername/biki',
-      demo: 'https://biki-demo.com',
+      demo: 'https://drive.google.com/file/d/1xX9iK62mdQdDmDp5WSNINA8vgTs8pfB2/view?usp=drive_link',
     },
   },
 

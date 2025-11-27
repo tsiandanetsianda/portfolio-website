@@ -79,7 +79,7 @@ const Hero = () => {
     <section id="home" ref={heroRef} className="relative h-screen w-full overflow-hidden bg-text-primary">
       <div ref={imageRef} className="absolute inset-0">
         <Image
-          src="/profile15.jpg"
+          src="/R6N_3997.jpg"
           alt="Hero Background"
           fill
           className="object-cover"
@@ -97,13 +97,8 @@ const Hero = () => {
         className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent"
       />
 
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div ref={textRef} className="text-center text-white px-6 max-w-5xl">
-          <div className="mb-8">
-            <span className="role-tag inline-block text-sm uppercase tracking-[0.2em] font-medium bg-white/5 border border-white/20 px-8 py-3 rounded-full backdrop-blur-md">
-              Full Stack Engineer
-            </span>
-          </div>
+      <div className="absolute inset-0 flex items-center justify-start">
+        <div ref={textRef} className="text-left text-white px-6 max-w-5xl ml-8">
 
           <div>
             <h1 className="font-['Playfair_Display'] text-6xl md:text-7xl lg:text-8xl font-bold leading-none mb-2">
@@ -121,7 +116,7 @@ const Hero = () => {
               ref={nameRef}
               className="tagline text-xl md:text-2xl font-light text-white/95 leading-relaxed"
             >
-              My work bridges the gap between digital and physical systems
+              Building intelligent mobile experiences powered by AI
             </p>
           </div>
         </div>
