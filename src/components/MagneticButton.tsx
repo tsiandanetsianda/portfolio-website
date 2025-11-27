@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import gsap from 'gsap';
 
 interface MagneticButtonProps {
@@ -17,7 +17,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
   onClick
 }) => {
   const buttonRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!buttonRef.current) return;
@@ -38,7 +37,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
     if (buttonRef.current) {
       gsap.to(buttonRef.current, {
         x: 0,
@@ -54,7 +52,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
       ref={buttonRef}
       className={`inline-block cursor-pointer ${className}`}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
     >

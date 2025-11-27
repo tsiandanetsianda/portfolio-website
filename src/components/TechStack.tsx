@@ -137,15 +137,12 @@ const TechStack = () => {
 
                   {/* Technologies */}
                   <div className={`flex flex-wrap ${styles.gap}`}>
-                    {category.technologies.map((tech, techIndex) => (
+                    {category.technologies.map((tech) => (
                       <div
-                        key={`${tech.name}-${techIndex}`}
+                        key={tech.name}
                         className={`tech-pill ${styles.pill} rounded-lg border border-border bg-white
                           font-medium text-text-primary transition-all duration-300
                           hover:border-text-tertiary hover:shadow-sm hover:-translate-y-0.5`}
-                        style={{
-                          animationDelay: `${techIndex * 0.05}s`,
-                        }}
                       >
                         <div className="flex flex-col">
                           <span>{tech.name}</span>

@@ -20,7 +20,7 @@ const ContactSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className={`text-4xl md:text-5xl font-semibold text-text-primary leading-tight ${playfairDisplay.className}`}>
-              Let's create something
+              Let&apos;s create something
               <span className="block mt-2">meaningful together</span>
             </h2>
           </motion.div>
