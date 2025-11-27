@@ -9,13 +9,14 @@ import { ArrowDownCircle } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const heroRef = useRef(null);
-  const textRef = useRef(null);
-  const imageRef = useRef(null);
-  const overlayRef = useRef(null);
-  const nameRef = useRef(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    if (!textRef.current) return;
     const chars = textRef.current.querySelectorAll('.char-animation');
 
     const tl = gsap.timeline();
@@ -67,8 +68,8 @@ const Hero = () => {
     };
   }, []);
 
-  const splitText = (text) => {
-    return text.split('').map((char, i) => (
+  const splitText = (text: string) => {
+    return text.split('').map((char: string, i: number) => (
       <span key={i} className="char-animation inline-block">
         {char}
       </span>

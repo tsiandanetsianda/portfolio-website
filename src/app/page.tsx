@@ -23,21 +23,21 @@ const projectBrandColors = {
 }
 
 export default function Home() {
-  const containerRef = useRef(null)
-  const heroRef = useRef(null)
-  const softwareDevRef = useRef(null)
-  const embeddedRef = useRef(null)
-  const workRef = useRef(null)
-  const educationRef = useRef(null)
-  const formalEduRef = useRef(null)
-  const certificatesRef = useRef(null)
-  const projectsRef = useRef(null)
-  const project1Ref = useRef(null)
-  const project2Ref = useRef(null)
-  const project3Ref = useRef(null)
-  const project4Ref = useRef(null)
-  const project5Ref = useRef(null)
-  const contactRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLDivElement>(null)
+  const softwareDevRef = useRef<HTMLDivElement>(null)
+  const embeddedRef = useRef<HTMLDivElement>(null)
+  const workRef = useRef<HTMLDivElement>(null)
+  const educationRef = useRef<HTMLDivElement>(null)
+  const formalEduRef = useRef<HTMLElement>(null)
+  const certificatesRef = useRef<HTMLElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
+  const project1Ref = useRef<HTMLElement>(null)
+  const project2Ref = useRef<HTMLElement>(null)
+  const project3Ref = useRef<HTMLElement>(null)
+  const project4Ref = useRef<HTMLElement>(null)
+  const project5Ref = useRef<HTMLElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -72,30 +72,38 @@ export default function Home() {
       })
 
       // Content animations
-      const content = sectionRef.current.querySelector('.content-wrapper')
-      gsap.from(content, {
-        scrollTrigger: {
-          trigger: content,
-          start: "top bottom",
-          end: "top center+=100",
-          scrub: true
-        },
-        y: 50,
-        opacity: 0
-      })
+      if (sectionRef.current) {
+        const content = sectionRef.current.querySelector('.content-wrapper')
+        if (content) {
+          gsap.from(content, {
+          scrollTrigger: {
+            trigger: content,
+            start: "top bottom",
+            end: "top center+=100",
+            scrub: true
+          },
+            y: 50,
+            opacity: 0
+          })
+        }
+      }
 
       // Image animations
-      const image = sectionRef.current.querySelector('.image-wrapper')
-      gsap.from(image, {
-        scrollTrigger: {
-          trigger: image,
-          start: "top bottom",
-          end: "top center+=100",
-          scrub: true
-        },
-        scale: 0.8,
-        opacity: 0
-      })
+      if (sectionRef.current) {
+        const image = sectionRef.current.querySelector('.image-wrapper')
+        if (image) {
+          gsap.from(image, {
+          scrollTrigger: {
+            trigger: image,
+            start: "top bottom",
+            end: "top center+=100",
+            scrub: true
+          },
+            scale: 0.8,
+            opacity: 0
+          })
+        }
+      }
     })
 
     // Transition elements animation
