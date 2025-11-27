@@ -184,17 +184,15 @@ export default function ProjectStats({
                 duration: 0.8,
                 type: "spring",
                 stiffness: 150,
-                delay: 0.2
-              }}
-              animate={{
-                y: [0, -15, 0],
-              }}
-              transition={{
+                delay: 0.2,
                 y: {
                   duration: 2.5,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }
+              }}
+              animate={{
+                y: [0, -15, 0],
               }}
               className="relative mb-6 sm:mb-8"
             >

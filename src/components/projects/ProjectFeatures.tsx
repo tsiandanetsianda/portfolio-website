@@ -24,9 +24,7 @@ export default function ProjectFeatures({
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isPlayingAll, setIsPlayingAll] = useState(false);
-  const [currentPlayingIndex, setCurrentPlayingIndex] = useState<number | null>(null);
   const [allVideosCompleted, setAllVideosCompleted] = useState(false);
-  const [activeVideoIndex, setActiveVideoIndex] = useState<number | null>(null);
 
   // Play all features sequentially
   const playAllFeatures = async () => {
@@ -50,7 +48,7 @@ export default function ProjectFeatures({
         // Wait for scroll to complete
         await new Promise(resolve => setTimeout(resolve, 800));
 
-        setCurrentPlayingIndex(i);
+        // Track current playing index (removed state for build optimization)
 
         // Reset video to start
         video.currentTime = 0;
@@ -73,13 +71,13 @@ export default function ProjectFeatures({
     }
 
     setIsPlayingAll(false);
-    setCurrentPlayingIndex(null);
+    // Reset current playing index (removed state for build optimization)
     setAllVideosCompleted(true);
   };
 
   const stopPlayAll = () => {
     setIsPlayingAll(false);
-    setCurrentPlayingIndex(null);
+    // Reset current playing index (removed state for build optimization)
     setAllVideosCompleted(false);
     videoRefs.current.forEach(video => {
       if (video) {
@@ -112,7 +110,7 @@ export default function ProjectFeatures({
                 if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
                   // Pause all other videos before playing this one
                   pauseAllVideosExcept(index);
-                  setActiveVideoIndex(index);
+                  // Set active video index (removed state for build optimization)
                   video.loop = true;
                   // Ensure video is loaded before playing
                   if (video.readyState >= 2) {

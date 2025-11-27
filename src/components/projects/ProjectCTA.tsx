@@ -119,7 +119,7 @@ export default function ProjectCTA({
               }}
               className="flex flex-wrap justify-center gap-4"
             >
-              {linkButtons.map((button, index) => (
+              {linkButtons.map((button) => (
                 <motion.a
                   key={button.key}
                   href={button.url}
