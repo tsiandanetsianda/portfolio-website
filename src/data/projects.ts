@@ -132,7 +132,6 @@ export const projects: Record<string, Project> = {
       { name: 'Docker', icon: 'SiDocker', category: 'Infrastructure' },
       { name: 'Nginx', icon: 'SiNginx', category: 'Infrastructure' },
       { name: 'AWS', icon: 'SiAmazonaws', category: 'Infrastructure' },
-      { name: 'Google Cloud', icon: 'SiGooglecloud', category: 'Tools' },
     ],
 
     impact: [
