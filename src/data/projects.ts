@@ -251,6 +251,8 @@ export const projects: Record<string, Project> = {
 
     links: {
       demo: 'https://drive.google.com/file/d/1xX9iK62mdQdDmDp5WSNINA8vgTs8pfB2/view?usp=drive_link',
+      linkedin:
+        'https://www.linkedin.com/posts/tsianda-netsianda-b07b41231_about-a-year-ago-i-was-diagnosed-with-malnutrition-ugcPost-7400118800790130688-RYrw?utm_source=share&utm_medium=member_desktop&rcm=ACoAADoC5PcB8y7qZfs3mVMK2RCmjvnOnYHDdZc',
     },
   },
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SiApple, SiGoogleplay, SiGithub, SiYoutube, SiTiktok } from 'react-icons/si';
+import { SiApple, SiGoogleplay, SiGithub, SiYoutube, SiTiktok, SiLinkedin } from 'react-icons/si';
 import { HiExternalLink, HiDocumentText } from 'react-icons/hi';
 
 interface Links {
@@ -12,6 +12,7 @@ interface Links {
   pdf?: string;
   youtube?: string;
   tiktok?: string;
+  linkedin?: string;
 }
 
 interface ProjectCTAProps {
@@ -44,6 +45,12 @@ export default function ProjectCTA({
       url: links.appStore,
       icon: <SiApple className="w-6 h-6" />,
       label: 'App Store',
+    },
+    {
+      key: 'linkedin',
+      url: links.linkedin,
+      icon: <SiLinkedin className="w-6 h-6" />,
+      label: 'LinkedIn',
     },
     {
       key: 'playStore',
