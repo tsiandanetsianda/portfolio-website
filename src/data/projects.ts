@@ -51,6 +51,7 @@ export interface Project {
     pdf?: string;
     youtube?: string;
     tiktok?: string;
+    linkedin?: string;
   };
 }
 
