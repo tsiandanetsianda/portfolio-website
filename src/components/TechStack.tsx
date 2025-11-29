@@ -49,6 +49,7 @@ const techCategories: TechCategory[] = [
       { name: 'MongoDB' },
       { name: 'SQLite' },
       { name: 'AWS' },
+      { name: 'Vercel' },
       { name: 'Docker' },
       { name: 'CI/CD' },
       { name: 'Rasa' },
