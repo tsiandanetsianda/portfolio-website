@@ -86,7 +86,7 @@ const ContactSection = () => {
             >
               <MagneticButton strength={0.15}>
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1KV5z_6K2_j9PseiC-fofNXN8jfdHRtzI"
+                  href="https://drive.google.com/file/d/1KnydSvr6hXnVKMWyhnBQPsLboToROCll/view?usp=sharing"
                   download="Tsianda_Netsianda_CV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
