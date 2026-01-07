@@ -159,7 +159,7 @@ export default function ProjectCTA({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-12 pt-8 border-t border-white/20 text-center ml-18"
+              className="mt-12 pt-8 border-t border-white/20 text-center ml-22"
             >
               <p className="text-lg text-red-500 font-medium">
                 This app was discontinued on the 10th of December 2025.
