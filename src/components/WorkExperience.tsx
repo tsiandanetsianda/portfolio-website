@@ -44,7 +44,7 @@ const experiences: Experience[] = [
     company: 'Moshal Program',
     role: 'Career Champion',
     type: 'Full-time',
-    duration: 'Jun 2025 - Present · 5 months',
+    duration: 'Jun 2025 - Dec 2025 · 6 months',
     location: 'South Africa',
     logo: '/MOSHAL-LOGO.png',
     description: 'Supporting Moshal scholars by enhancing access to career development pathways and helping them make informed professional decisions.',
