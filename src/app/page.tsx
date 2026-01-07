@@ -205,7 +205,7 @@ export default function Home() {
                 <div className="card-reflection flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-white border border-border rounded-2xl p-6 md:p-12 hover:border-text-tertiary hover:shadow-sm transition-all duration-300">
                   <div className="flex-1 space-y-6 md:space-y-8">
                     <h3 className="text-2xl md:text-3xl font-semibold text-text-primary">BSc Computer Science and Computer Engineering</h3>
-                    <p className="text-base md:text-lg text-text-secondary leading-relaxed">Currently pursuing studies in software systems, algorithms, machine learning, embedded systems, and digital electronics at the University of Cape Town.</p>
+                    <p className="text-base md:text-lg text-text-secondary leading-relaxed">Completed studies in software systems, algorithms, machine learning, embedded systems, and digital electronics at the University of Cape Town.</p>
                     <a
                       href="https://drive.google.com/file/d/1i6olrhExjdm2bH8Bs6JmheQg7uYKMAby/view?usp=sharing"
                       target="_blank"
