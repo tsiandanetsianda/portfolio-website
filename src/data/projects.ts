@@ -139,8 +139,8 @@ export const projects: Record<string, Project> = {
       { value: 4000, label: 'Downloads' },
       { value: 5, label: 'Stars (Apple App Store)' },
       { value: 4.4, label: 'Stars (Google Play)' },
-      { value: 1, label: 'Nominee - 2025 FNB App Of The Year Awards' },
-      { value: 1, label: 'Nominee - Mamokgethi Phakeng 2025 MEF Awards' },
+      { value: 1, label: 'Nomination - 2025 FNB App Of The Year Awards' },
+      { value: 1, label: 'Nomination - Mamokgethi Phakeng 2025 MEF Awards' },
     ],
 
     screenshots: [
@@ -242,7 +242,7 @@ export const projects: Record<string, Project> = {
 
     impact: [
       { value: 100, label: 'Nutrition items contributed to OpenFoodFacts' },
-      { value: 1, label: 'Nominee - 2025 FNB App Of The Year Awards' },
+      { value: 1, label: 'Nomination - 2025 FNB App Of The Year Awards' },
     ],
 
     screenshots: [
