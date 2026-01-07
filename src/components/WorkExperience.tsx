@@ -24,6 +24,19 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    id: 'fnb',
+    company: 'First National Bank',
+    role: 'Functional Configuration Consultant',
+    type: 'Full-time',
+    duration: 'Jan 2026 - Present',
+    location: 'City of Cape Town, Western Cape, South Africa · Hybrid',
+    logo: '/FNB-LOGO.jpg',
+    description: 'Working as a Functional Configuration Consultant at First National Bank.',
+    achievements: [],
+    techStack: [],
+    current: true
+  },
+  {
     id: 'mohara',
     company: 'MOHARA',
     role: 'Software Engineer Intern',
@@ -53,8 +66,7 @@ const experiences: Experience[] = [
       'Engage with industry networks to share opportunities for graduate programs, internships, and vacation work',
       'Support scholars in making informed professional decisions through personalized guidance'
     ],
-    techStack: ['Research', 'Career Development', 'Industry Networking'],
-    current: true
+    techStack: ['Research', 'Career Development', 'Industry Networking']
   }
 ];
 
