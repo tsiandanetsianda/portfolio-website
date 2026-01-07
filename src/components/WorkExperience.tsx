@@ -37,7 +37,7 @@ const experiences: Experience[] = [
       'Improved user experience by implementing optimistic updates and state management patterns, making the interface feel instant even during server processing',
       'Developed secure role-based access control allowing different permission levels for Admins, Managers, and team Members'
     ],
-    techStack: ['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'tRPC', 'Tailwind CSS']
+    techStack: ['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'tRPC', 'Tailwind CSS','Jira']
   },
   {
     id: 'moshal',

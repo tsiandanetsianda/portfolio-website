@@ -35,6 +35,7 @@ const techCategories: TechCategory[] = [
       { name: 'Git' },
       { name: 'Agile' },
       { name: 'TDD' },
+      { name: 'Jira' },
     ],
   },
   {
