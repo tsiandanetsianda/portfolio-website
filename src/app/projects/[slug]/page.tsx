@@ -78,6 +78,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         projectName={project.name}
         links={project.links}
         brandColor={project.brandColor}
+        projectSlug={project.slug}
       />
     </main>
   );

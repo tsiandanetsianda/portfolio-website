@@ -19,12 +19,14 @@ interface ProjectCTAProps {
   projectName: string;
   links: Links;
   brandColor: string;
+  projectSlug?: string;
 }
 
 export default function ProjectCTA({
   projectName,
   links,
   brandColor,
+  projectSlug,
 }: ProjectCTAProps) {
   const hexToRgb = (hex: string) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -149,6 +151,20 @@ export default function ProjectCTA({
             <p className="text-lg opacity-75">
               Project links coming soon...
             </p>
+          )}
+
+          {projectSlug === 'uni-info-sa' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-12 pt-8 border-t border-white/20 text-center ml-18"
+            >
+              <p className="text-lg text-red-500 font-medium">
+                This app was discontinued on the 10th of December 2025.
+              </p>
+            </motion.div>
           )}
         </motion.div>
       </div>
