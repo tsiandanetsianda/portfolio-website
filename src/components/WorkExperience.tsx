@@ -57,7 +57,7 @@ const experiences: Experience[] = [
     company: 'Moshal Program',
     role: 'Career Champion',
     type: 'Full-time',
-    duration: 'Jun 2025 - Dec 2025 · 6 months',
+    duration: 'Jun 2025 - Present',
     location: 'South Africa',
     logo: '/MOSHAL-LOGO.png',
     description: 'Supporting Moshal scholars by enhancing access to career development pathways and helping them make informed professional decisions.',
@@ -66,7 +66,8 @@ const experiences: Experience[] = [
       'Engage with industry networks to share opportunities for graduate programs, internships, and vacation work',
       'Support scholars in making informed professional decisions through personalized guidance'
     ],
-    techStack: ['Research', 'Career Development', 'Industry Networking']
+    techStack: ['Research', 'Career Development', 'Industry Networking'],
+    current: true
   }
 ];
 
